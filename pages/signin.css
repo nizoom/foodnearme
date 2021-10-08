@@ -8,7 +8,6 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: rgb(170, 165, 165);
 
 }
 
@@ -20,3 +19,7 @@
 form{
     margin-bottom: 10%;
 }
+
+a{
+    color: orangered;
+} 
