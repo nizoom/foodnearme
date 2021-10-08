@@ -1,0 +1,22 @@
+.signin-page-wrapper{
+    text-align: center;
+}
+
+
+.signin-wrapper{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(170, 165, 165);
+
+}
+
+
+.group{
+    margin: 10%;
+}
+
+form{
+    margin-bottom: 10%;
+}
