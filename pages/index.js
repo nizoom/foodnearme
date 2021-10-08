@@ -1,13 +1,15 @@
 import Head from 'next/head'
 import Image from 'next/image'
 import styles from '../styles/Home.module.css'
+import LogoutBtn from '../components/logoutbtn'
 
 export default function Home() {
   
   return (
     <div> 
-        <h1>HELLO</h1>
-        <h1>The value of customKey is:</h1>
+        <LogoutBtn/>
+        <h1 style = {{margin: "10px"}}>Welcome to the home page</h1>
+        
     </div>
   )
 }

@@ -1,6 +1,7 @@
 import React, {useRef, useState} from "react";
 import auth from "../firebase/clientApp";
 import Link from "next/link"
+import { useRouter } from "next/router"
 import { signIn } from "../firebase/firebaseauth";
 import { validateForm } from "../firebase/firebaseauth";
 
@@ -8,6 +9,7 @@ function SignInScreen() {
 
   const emailRef = useRef();
   const pwRef = useRef();
+  const router = useRouter();
 
   const [showErrs, setShowErrs] = useState("");
 
@@ -16,10 +18,14 @@ function SignInScreen() {
     const [emailValue, pwValue] = [emailRef.current.value, pwRef.current.value]
     const possibleErrs = validateForm(emailValue, pwValue, "...") //no pw confirmation here -> blank last arguement
     if(possibleErrs.length === 0 ){
-      //signIn(emailValue, pwValue);
+      let result = await signIn(emailValue, pwValue);
+      console.log(result)
+      if(result){ // if successful then go to home page
+        router.push("/")
+      }
     } else {
       let trimmedErrs = possibleErrs.substr(4)
-      setShowErrs(trimmedErrs)
+      setShowErrs(trimmedErrs) // may want to make this a ul for each err
     }
   }
 

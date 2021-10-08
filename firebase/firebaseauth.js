@@ -1,20 +1,24 @@
 import { getApp } from "@firebase/app";
-import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import { signOut, getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
 
-export function signIn(email, password){
+export async function signIn(email, password){
   const auth = getAuth();
 
-  signInWithEmailAndPassword(auth, email, password)
+  let result = await signInWithEmailAndPassword(auth, email, password)
   .then((userCredential) => {
     // Signed in 
     const user = userCredential.user;
+    console.log(user)
+    return true; // successful sign in
     // ...
   })
   .catch((error) => {
     const errorCode = error.code;
     const errorMessage = error.message;
+    console.log(errorMessage)
+    return false; 
   });
-
+  return result;
 }
 export function signUp(email, password){
 
@@ -32,6 +36,15 @@ export function signUp(email, password){
       });
 }
 
+export function logout(){
+  const auth = getAuth();
+  console.log("logging out")
+  signOut(auth).then(() => {
+    // Sign-out successful.
+  }).catch((error) => {
+    // An error happened.
+  });
+}
 
 export function validateForm(email, pw, cfmpw){
  
