@@ -1,25 +1,34 @@
-import React, {useState} from "react";
+import React, {useState, useRef, useEffect} from "react";
 import { logout } from "../firebase/firebaseauth";
 import auth from "../firebase/clientApp";
 import { useRouter } from "next/router";
 
-const LogoutBtn = () => {
+const LogoutBtn = (props) => {
 
-    const [btnText, setBtnText] = useState("Login")
+    const [btnText, setBtnText] = useState()
+
+    //const btnTextRef = useRef('');
+
+    useEffect(() => {
+        if(props.currentUser === null){
+            setBtnText("Login")
+        } else {
+            setBtnText("Logout")
+        }
+        
+        
+    }, [props.currentUser])
 
     const router = useRouter();
 
     function handleBtnClick (){
-        //if btnText === Login then to go signin page and change state
-        if(btnText === "Login"){
-            setBtnText("Logout")
+    //if btnText === Login then to go signin page and change state
+        if(btnText==="Login"){
             router.push("/signin")
-        } else {  // else call logout function and change state
-            logout()
-            setBtnText("Login")
-
+        } else {
+            logout();
         }
-
+    
     }
     return(
         <div>

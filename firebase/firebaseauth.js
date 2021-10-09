@@ -8,7 +8,7 @@ export async function signIn(email, password){
   .then((userCredential) => {
     // Signed in 
     const user = userCredential.user;
-    console.log(user)
+    //console.log(user)
     return true; // successful sign in
     // ...
   })

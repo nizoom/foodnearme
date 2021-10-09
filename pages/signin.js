@@ -19,7 +19,6 @@ function SignInScreen() {
     const possibleErrs = validateForm(emailValue, pwValue, "...") //no pw confirmation here -> blank last arguement
     if(possibleErrs.length === 0 ){
       let result = await signIn(emailValue, pwValue);
-      console.log(result)
       if(result){ // if successful then go to home page
         router.push("/")
       }

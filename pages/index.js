@@ -2,12 +2,19 @@ import Head from 'next/head'
 import Image from 'next/image'
 import styles from '../styles/Home.module.css'
 import LogoutBtn from '../components/logoutbtn'
+import {useAuthState} from "react-firebase-hooks/auth"
+import {getAuth} from "firebase/auth"
 
 export default function Home() {
   
+  const auth = getAuth();
+  const [user, loading, error] = useAuthState(auth);
+  
+  console.log(`Loading: ${loading} | Current user: ${user}`)
+   
   return (
     <div> 
-        <LogoutBtn/>
+        <LogoutBtn currentUser = {user}/>
         <h1 style = {{margin: "10px"}}>Welcome to the home page</h1>
         
     </div>
