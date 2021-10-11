@@ -2,8 +2,7 @@ import React, {useRef, useState} from "react";
 import auth from "../firebase/clientApp";
 import Link from "next/link"
 import { useRouter } from "next/router"
-import { signIn } from "../firebase/firebaseauth";
-import { validateForm } from "../firebase/firebaseauth";
+import { signIn, validateForm, GoogleSignin, FacebookSignin } from "../firebase/firebaseauth";
 
 function SignInScreen() {
 
@@ -28,6 +27,18 @@ function SignInScreen() {
     }
   }
 
+  const handleGoogleSignin = (event) =>{
+    event.preventDefault();
+    GoogleSignin()
+
+  }
+
+  const handleFacbookSignin = (event) => {
+    event.preventDefault();
+    FacebookSignin();
+  }
+
+
     return (
       <div className="signin-page-wrapper">
         
@@ -47,8 +58,8 @@ function SignInScreen() {
             <button type = "submit"> Submit </button>
             <div>
               <p> Or sign in with : </p>
-              <button> Gmail </button>
-              <button> Facebook </button>
+              <button onClick = {handleGoogleSignin}> Gmail </button>
+              <button onClick= {handleFacbookSignin}> Facebook </button>
             </div> 
           </form>
           <div>

@@ -11,12 +11,16 @@ export default function Home() {
   const [user, loading, error] = useAuthState(auth);
   
   console.log(`Loading: ${loading} | Current user: ${user}`)
-   
+  
+  const welcomeStatement = `Welcome ${user}, what are ya hungry for?
+  `
   return (
     <div> 
         <LogoutBtn currentUser = {user}/>
         <h1 style = {{margin: "10px"}}>Welcome to the home page</h1>
-        
+        {user !== null ? <h2>
+          {welcomeStatement}
+        </h2> : null}
     </div>
   )
 }
