@@ -3,6 +3,7 @@ import React, {useRef, useState} from "react";
 // import { getAuth } from "@firebase/auth";
 import { signUp } from "../firebase/firebaseauth";
 import { validateForm } from "../firebase/firebaseauth";
+import { createUserinDB } from "../firebase/setdatafirebase";
 import awth from "../firebase/clientApp";
 
 function signUpPage(){
@@ -10,6 +11,7 @@ function signUpPage(){
     const emailRef = useRef();
     const pwRef = useRef();
     const pwCfmRef = useRef();
+    const usernameRef = useRef();
 
     const [showErrs, setShowErrs] = useState("")
 
@@ -17,11 +19,15 @@ function signUpPage(){
         event.preventDefault();
         console.log("signing up")
 
-        const [emailValue, pwValue, pwCfmValue] = [emailRef.current.value,pwRef.current.value, pwCfmRef.current.value] 
+        const [emailValue, pwValue, pwCfmValue, usernameValue] = [emailRef.current.value,pwRef.current.value, pwCfmRef.current.value, usernameRef.current.value] 
         
-        const possibleErrs = await validateForm(emailValue, pwValue, pwCfmValue)
+        const possibleErrs = await validateForm(emailValue, pwValue, pwCfmValue, usernameValue)
         if(possibleErrs.length === 0){
-             signUp(emailValue, pwValue)
+             const success = await signUp(emailValue, pwValue)
+             
+             if(success){
+             createUserinDB(usernameValue, emailValue)
+             }
         } else {
             //list all errors in a state hook
             //delete first 'and'
@@ -40,6 +46,12 @@ function signUpPage(){
                         <label htmlFor="email"> Email:</label>
                         <input type="email" name = "email" ref = {emailRef}/>
                     </div>
+
+                    <div className="group">
+                        <label htmlFor="username"> Username:</label>
+                        <input type="text" name = "username" ref = {usernameRef}/>
+                    </div>
+                    
                     <div className="group"> 
                         <label htmlFor="password"> Password: </label>
                         <input type="password" name="password" ref = {pwRef}/> 

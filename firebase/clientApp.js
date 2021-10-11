@@ -21,4 +21,4 @@ const app = initializeApp(clientCredentials);
 
 const awth = getAuth(app)
 
-export default awth;
+export default {awth, app};

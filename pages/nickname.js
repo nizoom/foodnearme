@@ -1,12 +1,14 @@
 import React, {useRef} from "react"
-
-const NickNamePage = (props) => {
+import { postName } from "../firebase/setdatafirebase";
+import { createUserinDB } from "../firebase/setdatafirebase";
+const NickNamePage = (props) => { // for ppl who login w gmail or fb and don't have a nickname set
 
     const nameRef = useRef();
 
     function handleNameSubmit(event){
         event.preventDefault();
         console.log(nameRef.current.value)
+        //createUserinDB();
     } 
     return(
         <div className = "nickname-page-wrapper">

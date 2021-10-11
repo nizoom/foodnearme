@@ -20,20 +20,24 @@ export async function signIn(email, password){
   });
   return result;
 }
-export function signUp(email, password){
+export async function signUp(email, password){
 
     const auth = getAuth();
-    createUserWithEmailAndPassword(auth, email, password)
+    const result = createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         // Signed in 
         const user = userCredential.user;
         // ...
+        console.log(user)
+        return true;
       })
       .catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
+        console.log(`${errorCode}: ${errorMessage}`)
         // ..
       });
+      return result;
 }
 
 
@@ -47,7 +51,7 @@ export function logout(){
   });
 }
 
-export function validateForm(email, pw, cfmpw){
+export function validateForm(email, pw, cfmpw, username){
  
   let error = {
     emptyString : [false, "Please make sure all fields are filled in"], 
