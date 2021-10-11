@@ -1,13 +1,22 @@
 import React, {useRef, useState} from "react";
-// import auth from "../firebase/clientApp";
-// import { getAuth } from "@firebase/auth";
 import { signUp } from "../firebase/firebaseauth";
 import { validateForm } from "../firebase/firebaseauth";
 import { createUserinDB } from "../firebase/setdatafirebase";
 import awth from "../firebase/clientApp";
+import { useRouter } from "next/router";
+
+import {useAuthState} from "react-firebase-hooks/auth"
+import {getAuth} from "firebase/auth"
+
 
 function signUpPage(){
+    //hook to get userid once the accoutn is created
+    const auth = getAuth();
+    const [user, loading, error] = useAuthState(auth);
 
+    const router = useRouter();
+
+    //input refs 
     const emailRef = useRef();
     const pwRef = useRef();
     const pwCfmRef = useRef();
@@ -26,7 +35,8 @@ function signUpPage(){
              const success = await signUp(emailValue, pwValue)
              
              if(success){
-             createUserinDB(usernameValue, emailValue)
+             createUserinDB(usernameValue, emailValue, JSON.stringify(user.uid))
+             router.push('/signin')
              }
         } else {
             //list all errors in a state hook
