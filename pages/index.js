@@ -12,7 +12,7 @@ export default function Home() {
   
   console.log(`Loading: ${loading} | Current user: ${user}`)
   
-  const welcomeStatement = `Welcome ${user}, what are ya hungry for?
+  const welcomeStatement = `Welcome ${JSON.stringify(user)}, what are ya hungry for?
   `
   return (
     <div> 

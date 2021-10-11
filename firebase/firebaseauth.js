@@ -97,7 +97,6 @@ export function validateForm(email, pw, cfmpw){
 export async function GoogleSignin(){
   const provider = new GoogleAuthProvider();
   const auth = getAuth();
-
   const result = await signInWithPopup(auth, provider)
   .then((result) => {
     // This gives you a Google Access Token. You can use it to access the Google API.
@@ -105,6 +104,7 @@ export async function GoogleSignin(){
     const token = credential.accessToken;
     // The signed-in user info.
     const user = result.user;
+    //console.log(user)
     return user;
     // ...
   }).catch((error) => {
@@ -116,10 +116,11 @@ export async function GoogleSignin(){
     // The AuthCredential type that was used.
     const credential = GoogleAuthProvider.credentialFromError(error);
     // ...
+    console.log(`error - ${errorCode}: ${errorMessage}`)
     return `error.message`
   });
   
-  console.log(result)
+  return result;
 }
 
 export async function FacebookSignin(){
@@ -135,7 +136,8 @@ export async function FacebookSignin(){
     // This gives you a Facebook Access Token. You can use it to access the Facebook API.
     const credential = FacebookAuthProvider.credentialFromResult(result);
     const accessToken = credential.accessToken;
-    return user;
+    console.log(user)
+    return true;
     // ...
   })
   .catch((error) => {
@@ -146,7 +148,8 @@ export async function FacebookSignin(){
     const email = error.email;
     // The AuthCredential type that was used.
     const credential = FacebookAuthProvider.credentialFromError(error);
-    return errorMessage;
+    console.log(`error - ${errorCode}: ${errorMessage}`)
+    return false;
     // ...
   });
   return result

@@ -27,17 +27,30 @@ function SignInScreen() {
     }
   }
 
-  const handleGoogleSignin = (event) =>{
-    event.preventDefault();
-    GoogleSignin()
+  const handleFirebaseLogin = async (e, loginMethod) => {
+    e.preventDefault()
+    // console.log(loginMethod)
 
+    if(loginMethod === "Gmail"){
+      const result = await GoogleSignin()
+      console.log(result)
+      resolveLogin(result)
+    } else {
+      const result = await FacebookSignin();
+      console.log(result)
+      resolveLogin(result)
+    }
   }
 
-  const handleFacbookSignin = (event) => {
-    event.preventDefault();
-    FacebookSignin();
+  function resolveLogin(attemptResult){
+    //if successful
+    if(attemptResult){
+      router.push('/')
+    } else {
+      //err handling 
+    }
   }
-
+  
 
     return (
       <div className="signin-page-wrapper">
@@ -58,8 +71,8 @@ function SignInScreen() {
             <button type = "submit"> Submit </button>
             <div>
               <p> Or sign in with : </p>
-              <button onClick = {handleGoogleSignin}> Gmail </button>
-              <button onClick= {handleFacbookSignin}> Facebook </button>
+              <button onClick = {() => handleFirebaseLogin(event, "Gmail")}> Gmail </button>
+              <button onClick= {() => handleFirebaseLogin(event, "Facebook")}> Facebook </button>
             </div> 
           </form>
           <div>
