@@ -5,14 +5,14 @@ import { createUserinDB } from "../firebase/setdatafirebase";
 import awth from "../firebase/clientApp";
 import { useRouter } from "next/router";
 
-import {useAuthState} from "react-firebase-hooks/auth"
-import {getAuth} from "firebase/auth"
+// import {useAuthState} from "react-firebase-hooks/auth"
+// import {getAuth} from "firebase/auth"
 
 
 function signUpPage(){
-    //hook to get userid once the accoutn is created
-    const auth = getAuth();
-    const [user, loading, error] = useAuthState(auth);
+    //hook to get userid once the account is created
+    // const auth = getAuth();
+    //const [user, loading, error] = useAuthState(auth);
 
     const router = useRouter();
 
@@ -32,11 +32,13 @@ function signUpPage(){
         
         const possibleErrs = await validateForm(emailValue, pwValue, pwCfmValue, usernameValue)
         if(possibleErrs.length === 0){
-             const success = await signUp(emailValue, pwValue)
+            
+            //this obj stores uid and any possible errors from creating an account
+             const resultsObj = await signUp(emailValue, pwValue)
              
-             if(success){
-             createUserinDB(usernameValue, emailValue, JSON.stringify(user.uid))
-             router.push('/signin')
+             if(resultsObj.error === false){ //no errors
+                createUserinDB(usernameValue, emailValue, resultsObj.uid);
+                router.push('/signin')
              }
         } else {
             //list all errors in a state hook

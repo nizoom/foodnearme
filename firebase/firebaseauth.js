@@ -23,21 +23,33 @@ export async function signIn(email, password){
 export async function signUp(email, password){
 
     const auth = getAuth();
-    const result = createUserWithEmailAndPassword(auth, email, password)
+
+    //stores the results of the signup attempt
+    let resultsObject = {
+      error: false, errorMessage: '', errorCode: '',
+      uid: ''
+    }
+    await createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         // Signed in 
         const user = userCredential.user;
-        // ...
-        console.log(user)
-        return true;
+      
+        resultsObject.uid = user.uid;
+
+        return resultsObject;
       })
       .catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
-        console.log(`${errorCode}: ${errorMessage}`)
-        // ..
+        // console.log(`${errorCode}: ${errorMessage}`)
+        resultsObject.error = true;
+        resultsObject.errorCode = errorCode;
+        resultsObject.errorMessage = errorMessage;
+        return resultsObject;
+
       });
-      return result;
+      console.log(resultsObject)
+      return resultsObject;
 }
 
 

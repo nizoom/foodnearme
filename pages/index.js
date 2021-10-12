@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import Head from 'next/head'
 import Image from 'next/image'
 import styles from '../styles/Home.module.css'
@@ -12,17 +12,27 @@ export default function Home() {
   
   const auth = getAuth();
   const [user, loading, error] = useAuthState(auth);
+  const [username, setUsername] = useState()
   
   //console.log(`Loading: ${loading} | Current user: ${user}`)
   
-  const welcomeStatement = `Welcome ${JSON.stringify(user)}, what are ya hungry for?`
+  const welcomeStatement = `Welcome ${username}, what are ya hungry for?`
 
+
+  async function getDataFromUid (){
+    const uid = formattedUid(JSON.stringify(user.uid))
+    console.log(uid)
+    const userData = await getUserData(uid)
+    // console.log(userData)
+    const name = userData.username;
+    setUsername(name);
+
+
+  }
 
   useEffect(() => {
-    function getDataFromEmail (){
-      const uid = formattedUid(JSON.stringify(user.uid))
-      console.log(uid)
-      ///getUserData()
+    if(user!==null){
+      getDataFromUid()
     }
   })
 

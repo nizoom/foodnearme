@@ -3,20 +3,21 @@ import {app} from './clientApp.js'
 
 
 export async function createUserinDB(name, email, uid){
-    //delete quote marks from JSON.stringify
-
-
     const db = getDatabase();
-    set(ref(db, 'users/' + formattedUid(uid)), {
+    set(ref(db, 'users/' + uid), {
         username: name,
         email: email,
     });
 }
     
+
+
+//delete quote marks from JSON.stringify through formattedUid()
+
 export function formattedUid(uid) {
-    const newString = uid.substring(1)
-    const lastString = newString.slice(0, -1);
-    return lastString
+    const deletefirstquote = uid.substring(1)
+    const deletelastquote = deletefirstquote.slice(0, -1);
+    return deletelastquote
 }
 
 export async function postName(){
