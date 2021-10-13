@@ -7,6 +7,7 @@ import {useAuthState} from "react-firebase-hooks/auth"
 import {getAuth} from "firebase/auth"
 import { getUserData } from '../firebase/getdatafirebase'
 import { formattedUid } from '../firebase/setdatafirebase'
+import Script from 'next/script'
 
 export default function Home() {
   
@@ -36,13 +37,17 @@ export default function Home() {
     }
   })
 
+  
   return (
     <div> 
+      <Script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCjYaPndbfufJc-FoD7jZhA_FWa85FP2QA&libraries=places&callback=../apifuncs/getfood"
+        />
         <LogoutBtn currentUser = {user}/>
-        <h1 style = {{margin: "10px"}}>Welcome to the home page</h1>
+        <h1 style = {{margin: "10px"}}>Welcome to Food Near Me</h1>
+        
         {user !== null ? <h2>
           {welcomeStatement}
-        </h2> : null}
+        </h2> : <h2 style = {{margin: "10px"}}> Log in and we'll handle the rest! </h2>}
     </div>
   )
 }
