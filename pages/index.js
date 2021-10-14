@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import {useState } from 'react'
 import Head from 'next/head'
 import Image from 'next/image'
 import styles from '../styles/Home.module.css'
@@ -31,13 +31,8 @@ export default function Home() {
 
   }
 
-  useEffect(() => {
-    if(user!==null){
-      getDataFromUid()
-    }
-  })
+ 
 
-  
   return (
     <div> 
       <Script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCjYaPndbfufJc-FoD7jZhA_FWa85FP2QA&libraries=places&callback=../apifuncs/getfood"
