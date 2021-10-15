@@ -1,7 +1,7 @@
-const Posts = ({results : query}) => {
+const Posts = ({results : query, searchParams : keywords}) => {
     return (
         <div>
-            <h1> getServerSideProps </h1>
+            <h1> Google Places Results for {keywords}</h1>
 
             {query.results.map((q, index) => (
                 <div key = {index}> 
@@ -15,9 +15,9 @@ const Posts = ({results : query}) => {
 export async function getServerSideProps(context){
     
     // context provides the params for the query
-    
+    console.log(context.params)
     const apiKey = process.env.NEXT_PUBLIC_GOOGLE_KEY;
-    const url = `https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=-33.8670522%2C151.1957362&radius=1500&type=restaurant&keyword=${"Thai"}&key=${apiKey}`
+    const url = `https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=-33.8670522%2C151.1957362&radius=1500&type=restaurant&keyword=${context.params.query}&key=${apiKey}`
     
     //const url = 'https://jsonplaceholder.typicode.com/todos/'
     const res =  await fetch (url)
@@ -27,6 +27,7 @@ export async function getServerSideProps(context){
     return {
         props: {
             results: posts, 
+            searchParams: context.params.query
         }
     }
 }

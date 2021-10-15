@@ -1,16 +1,21 @@
 import React, {useRef} from "react";
+import { useRouter } from "next/router"
 
 
 const FoodForm = (props) => {
 
     const cuisineRef = useRef();
     const locationRef = useRef();
+    const router = useRouter();
 
     function handleFoodSubmit (e){
         e.preventDefault();
         const [cuisineValue, locationValue] = [cuisineRef.current.value, locationRef.current.value]
         console.log("submitted")
         console.log(`${cuisineValue} and ${locationValue}`)
+        //validate form
+        //if valid
+        router.push(`/posts/${cuisineValue}`)
 
     }
     return (
