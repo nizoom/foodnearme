@@ -5,7 +5,7 @@ const Posts = ({results : query, searchParams : keywords}) => {
 
             {query.results.map((q, index) => (
                 <div key = {index}> 
-                   <h3> {q.place_id} - {q.name} </h3> 
+                   <h3> {q.vicinity} - {q.name} - {q.rating} stars </h3> 
                 </div>
             ))}
         </div>

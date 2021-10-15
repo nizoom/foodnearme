@@ -1,14 +1,19 @@
-.foodform-form{
+.specific-food-form{
     font-size: large;
-    display: flex;
-    flex-direction: column;
-    text-align: center;
+  
 }
 
-.foodform-form div{
+.specific-food-form div{
     margin-top: 20px;
 }
 
-.foodform-form div input{
+.specific-food-form div input{
     margin-left: 10px;
+}
+
+.specific-foodform-wrapper{
+    margin: 50px 0 0 0;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
 }

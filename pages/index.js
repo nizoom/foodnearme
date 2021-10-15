@@ -9,10 +9,9 @@ import { getUserData } from '../firebase/getdatafirebase'
 import { formattedUid } from '../firebase/setdatafirebase'
 import Script from 'next/script'
 
-import { getServerSideProps } from './posts/[query]'
-import Posts from './posts/[query]'
 
-import FoodForm from '../components/foodform'
+import SpecificFoodForm from '../components/specificfoodform'
+import FaveSection from '../components/favesComponent/favesection'
 
 export default function Home() {
   
@@ -50,7 +49,10 @@ export default function Home() {
         {user !== null ? <h2>
           {welcomeStatement}
         </h2> : <h2 style = {{margin: "10px"}}> Log in and we'll handle the rest! </h2>}
-          <FoodForm/>
+          
+          <SpecificFoodForm/>
+
+          <FaveSection/>
     </div>
   )
 }

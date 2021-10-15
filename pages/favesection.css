@@ -1,0 +1,19 @@
+.favesection-wrapper{
+    margin: 10px;
+}
+
+.favesection-wrapper h4{
+    font-size: large;
+}
+
+.favesform{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 1rem;
+}
+
+.new-fave-div{
+    width: 100%;
+    height: 100%;
+
+}

@@ -2,7 +2,7 @@ import React, {useRef} from "react";
 import { useRouter } from "next/router"
 
 
-const FoodForm = (props) => {
+const SpecificFoodForm = (props) => {
 
     const cuisineRef = useRef();
     const locationRef = useRef();
@@ -15,12 +15,24 @@ const FoodForm = (props) => {
         console.log(`${cuisineValue} and ${locationValue}`)
         //validate form
         //if valid
+        //reset to blank
+        cuisineRef.current.value = ""
         router.push(`/posts/${cuisineValue}`)
 
     }
+
+    function handleFaveInit(){
+        console.log('finding places based on preferences')
+    }
     return (
-        <div className="foodform-wrapper">
-            <form onSubmit = {handleFoodSubmit} className="foodform-form">
+
+        <div className="specific-foodform-wrapper">
+             <div>
+                     <button onClick = {handleFaveInit}> <h3> Find food based on your faves </h3> </button>
+                </div>
+            
+            <form onSubmit = {handleFoodSubmit} className="specific-food-form">
+                <p> Prefer something specific? </p>
                 <div>
                     <label htmlFor ="cuisine"> What cuisine are you in the mood for?</label>
                     <input type="text" name = "cuisine" ref = {cuisineRef}/>
@@ -37,4 +49,4 @@ const FoodForm = (props) => {
     )
 }
 
-export default FoodForm;
+export default SpecificFoodForm;
