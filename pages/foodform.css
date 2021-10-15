@@ -1,0 +1,14 @@
+.foodform-form{
+    font-size: large;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+.foodform-form div{
+    margin-top: 20px;
+}
+
+.foodform-form div input{
+    margin-left: 10px;
+}

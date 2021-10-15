@@ -13,8 +13,11 @@ const Posts = ({results : query}) => {
 }
 
 export async function getServerSideProps(context){
+    
+    // context provides the params for the query
+    
     const apiKey = process.env.NEXT_PUBLIC_GOOGLE_KEY;
-    const url = `https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=-33.8670522%2C151.1957362&radius=1500&type=restaurant&keyword=cruise&key=${apiKey}`
+    const url = `https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=-33.8670522%2C151.1957362&radius=1500&type=restaurant&keyword=${"Thai"}&key=${apiKey}`
     
     //const url = 'https://jsonplaceholder.typicode.com/todos/'
     const res =  await fetch (url)
