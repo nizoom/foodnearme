@@ -5,7 +5,7 @@ export async function getUserData(uid){
    const dbRef = ref(getDatabase());
    const userData = await get(child(dbRef, `users/${uid}`)).then((snapshot) => {
      if (snapshot.exists()) {
-       console.log(snapshot.val());
+       //console.log(snapshot.val());
        return snapshot.val();
      } else {
        console.log("No data available");

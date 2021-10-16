@@ -19,6 +19,7 @@ export default function Home() {
   const [user, loading, error] = useAuthState(auth);
   const [username, setUsername] = useState()
   const [foodPrefsFromDB, setFoodPrefsFromDB] = useState();
+  const [userID, setUserID] = useState()
   
   //console.log(`Loading: ${loading} | Current user: ${user}`)
   
@@ -27,9 +28,10 @@ export default function Home() {
 
   async function getDataFromUid (){
     const uid = formattedUid(JSON.stringify(user.uid))
-    //console.log(uid)
+    setUserID(uid);
     const userData = await getUserData(uid)
-    console.log(userData)
+
+    //console.log(userData)
     setFoodPrefsFromDB(userData.foodPreferences);
 
     const name = userData.username;
@@ -55,9 +57,9 @@ export default function Home() {
               
             <SpecificFoodForm/>
             
-            <FaveSection/> 
+            <FaveSection currentFavesState = {foodPrefsFromDB} uid = {userID}/> 
           </div>
-          
+
           : <h2 style = {{margin: "10px"}}> Log in and we'll handle the rest! </h2>}
           
           

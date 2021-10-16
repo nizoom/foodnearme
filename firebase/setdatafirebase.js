@@ -19,7 +19,6 @@ export async function createUserinDB(name, email, uid){
 }
     
 
-
 //delete quote marks from JSON.stringify through formattedUid()
 
 export function formattedUid(uid) {
@@ -34,3 +33,12 @@ export async function postName(){
 }
 
 
+export function updateFoodPreferences(uid, newfoodobprefs){
+    console.log('updating preferences')
+    const db = getDatabase();
+
+    set(ref(db, 'users/' + uid + '/foodPreferences'), {
+        foodPreferences : newfoodobprefs
+    });
+
+}

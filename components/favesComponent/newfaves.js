@@ -1,4 +1,5 @@
 import React from "react";
+import { updateFoodPreferences } from "../../firebase/setdatafirebase";
 
 const FavesForm = (props) => {
     //to add new faves
@@ -14,7 +15,9 @@ const FavesForm = (props) => {
 
     function handleSavePreferences (e) {
         e.preventDefault();
-        //call function to update preferences on firebase db 
+         //call function to update preferences on firebase db 
+
+        updateFoodPreferences(props.uid, foodPreferenceState)
     }
 
     function handleCheckChange(e){

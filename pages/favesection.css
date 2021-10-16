@@ -17,3 +17,8 @@
     height: 100%;
 
 }
+
+.no-faves-message{
+    text-align: center;
+    font-size: medium;
+}
