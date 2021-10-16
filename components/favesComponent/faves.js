@@ -14,13 +14,15 @@ const FavesForm = (props) => {
 
     function handleSavePreferences (e) {
         e.preventDefault();
+        //call function to update preferences on firebase db 
     }
 
     function handleCheckChange(e){
-        let isChecked = e.target.checked;
-        let value = e.target.value;
-        foodPreferenceState.[value] = isChecked;
-        console.log(foodPreferenceState)
+        let checkStatus = e.target.checked;
+        let foodType = e.target.value;
+        //update state w o rerender
+        foodPreferenceState.[foodType] = checkStatus;
+        
     }
 
     return (

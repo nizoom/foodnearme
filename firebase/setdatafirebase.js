@@ -4,9 +4,17 @@ import {app} from './clientApp.js'
 
 export async function createUserinDB(name, email, uid){
     const db = getDatabase();
+    let foodPreferenceState = {
+        Indian : false, Italian : false,
+        Japanese : false, Chinese : false,
+        Thai : false, Korean : false,
+        Mexican : false, American : false,
+        Mediterranean : false
+    }
     set(ref(db, 'users/' + uid), {
         username: name,
         email: email,
+        foodPreferences : foodPreferenceState
     });
 }
     
@@ -26,18 +34,3 @@ export async function postName(){
 }
 
 
- //create userID#
-    // let userId = '';
-    // const alphabet = 'abcdefghijklmnopqrstuvwxyz';
-    // for(let i = 0 ; i < 8 ; i++){
-    //     let randomIndex = Math.floor(Math.random() * 26);
-    //     // if 0 then return the random number else return 
-    //     // the letter in the alphabet corresponding to that random index
-    //     const lettersOrNums = Math.floor(Math.random() * 2)
-    //     if(lettersOrNums --- 0 ){
-    //         userId += randomIndex
-    //     } else {
-    //         userId += alphabet[randomIndex]
-    //     }
-
-    // }

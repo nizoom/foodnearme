@@ -1,4 +1,4 @@
-import {useState } from 'react'
+import {useState, useEffect } from 'react'
 import Head from 'next/head'
 import Image from 'next/image'
 import styles from '../styles/Home.module.css'
@@ -18,6 +18,7 @@ export default function Home() {
   const auth = getAuth();
   const [user, loading, error] = useAuthState(auth);
   const [username, setUsername] = useState()
+  const [foodPrefsFromDB, setFoodPrefsFromDB] = useState();
   
   //console.log(`Loading: ${loading} | Current user: ${user}`)
   
@@ -26,17 +27,18 @@ export default function Home() {
 
   async function getDataFromUid (){
     const uid = formattedUid(JSON.stringify(user.uid))
-    console.log(uid)
+    //console.log(uid)
     const userData = await getUserData(uid)
-    // console.log(userData)
+    console.log(userData)
+    setFoodPrefsFromDB(userData.foodPreferences);
+
     const name = userData.username;
     setUsername(name);
-
-
   }
 
-  //maybe yuo take the params from the user and 
-  //then use the context with the link 
+  useEffect(() => {
+    user !== null ? getDataFromUid() : null
+  }, [user])
 
 
   return (
@@ -46,13 +48,19 @@ export default function Home() {
         <LogoutBtn currentUser = {user}/>
         <h1 style = {{margin: "10px"}}>Welcome to Food Near Me</h1>
         
-        {user !== null ? <h2>
-          {welcomeStatement}
-        </h2> : <h2 style = {{margin: "10px"}}> Log in and we'll handle the rest! </h2>}
+        {user !== null ? 
+          <div> 
+            <h2>
+            {welcomeStatement}</h2> 
+              
+            <SpecificFoodForm/>
+            
+            <FaveSection/> 
+          </div>
           
-          <SpecificFoodForm/>
-
-          <FaveSection/>
+          : <h2 style = {{margin: "10px"}}> Log in and we'll handle the rest! </h2>}
+          
+          
     </div>
   )
 }
