@@ -5,13 +5,14 @@ const FaveSection = (props) => {
     return (
         <div className = "favesection-wrapper">
             <h2> Favorite Bites </h2>
-            <h4> Current Faves </h4>
+            {/* <h4> Current Faves </h4>
             <div>
-                <CurrentFaves currentFavesState = {props.currentFavesState}/>
-            </div>
+                <CurrentFaves/>
+            </div> */}
             <div>
-                <h4> Add New Faves </h4>
-                <FavesForm uid = {props.uid}/>
+                <h4> Edit Your Current Faves </h4>
+                <FavesForm uid = {props.uid} currentFavesState = {props.currentFavesState}
+                />
             </div>
 
         </div>

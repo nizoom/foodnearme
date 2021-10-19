@@ -59,7 +59,7 @@ export default function Home() {
         
         {foodPrefsFromDB === null ? <h2 style = {{margin: "10px"}}> Log in and we'll handle the rest! </h2> :
           <div> 
-            <h2>
+            <h2 style = {{margin: '10px'}}>
             {welcomeStatement}</h2> 
               
             <SpecificFoodForm/>
