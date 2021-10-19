@@ -27,6 +27,7 @@ const LogoutBtn = (props) => {
             router.push("/signin")
         } else {
             logout();
+            props.clearHomeScreen()
         }
     
     }
