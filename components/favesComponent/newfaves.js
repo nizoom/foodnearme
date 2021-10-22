@@ -1,4 +1,4 @@
-import React, {useRef} from "react";
+import React, {useRef, useEffect} from "react";
 import { updateFoodPreferences } from "../../firebase/setdatafirebase";
 
 const FavesForm = (props) => {
@@ -14,16 +14,15 @@ const FavesForm = (props) => {
 
     //default preferences
     let foodPreferenceState = {
-    
-    Indian : {status: false, index: 0},
-    Italian : {status: false, index: 1},
-    Japanese : {status: false, index: 2}, 
-    Chinese : {status: false, index: 3},
-    Thai : {status: false, index: 4}, 
-    Korean : {status: false, index: 5},
-    Mexican : {status: false, index: 6}, 
-    American : {status: false, index: 7},
-    Mediterranean : {status: false, index: 8}
+        Indian : false,
+        Italian : false,
+        Japanese : false, 
+        Chinese : false,
+        Thai : false, 
+        Korean : false,
+        Mexican : false, 
+        American : false,
+        Mediterranean : false
     }
 
     function handleSavePreferences (e) {
@@ -46,32 +45,64 @@ const FavesForm = (props) => {
         checkRef.current.checked = true;
     }
 
-    const [IndianRef, ItalianRef, JapaneseRef, ChineseRef, ThaiRef, 
-        KoreanRef, MexicanRef, AmericanRef, MediterraneanRef] = useRef();
+    const IndianRef = useRef();
+    const ItalianRef = useRef()
+    const JapaneseRef = useRef()
+    const ChineseRef = useRef()
+    const ThaiRef = useRef()
+    const KoreanRef = useRef();
+    const MexicanRef = useRef();
+    const AmericanRef = useRef();
+    const MediterraneanRef = useRef();
 
-    const allRefs = [ IndianRef, ItalianRef, JapaneseRef, ChineseRef, ThaiRef, 
-        KoreanRef, MexicanRef, AmericanRef, MediterraneanRef];
 
-
-    (function () {
-    for (const property in favesObj) {
-        // console.log([property])
-        if(favesObj[property].status){
-            console.log(property)
-            //find the index of the property
-            //set checkbox to true
-            const refIndex = favesObj[property].index;
-            console.log(refIndex)
-            assignCheckStatus(refIndex)
-        } else {
-            //activeFaves.push(`${property} is not an active fave`)
+    useEffect (() => {
+        for (const property in favesObj) {
+            // console.log([property])
+            if(favesObj[property].status){
+                console.log(property)
+                //find the index of the property
+                //set checkbox to true
+                assignCheckStatus(property)
+            } 
         }
-    }
-    })();
+    }, [])
 
-    function assignCheckStatus(cuisineIndex){
-        //console.log(allRefs[cuisineIndex].current)
-        console.log(allRefs)
+   
+
+    function assignCheckStatus(cuisine){
+       
+       switch(cuisine){
+           case 'Indian':
+               IndianRef.current.checked = true;
+               break;
+           case 'Italian':
+                ItalianRef.current.checked = true;
+               break;
+           case 'Japanese':
+                JapaneseRef.current.checked = true;
+               break;
+            case 'Chinese':
+                ChineseRef.current.checked = true;
+               break;
+            case 'Thai':
+                ThaiRef.current.checked = true;
+                break;
+            case 'Korean':
+                KoreanRef.current.checked = true;
+                break;
+            case 'Mexican':
+                MexicanRef.current.checked = true;
+                break;
+            case 'American':
+                AmericanRef.current.checked = true;
+                break;
+            case 'Mediterranean':
+                Mediterranean.current.checked = true;
+                break;
+
+       }
+        //console.log(allRefs[0].current)
         // = true;
     }
     // Indian : {status: false, index: 0},
@@ -83,7 +114,7 @@ const FavesForm = (props) => {
     // Mexican : {status: false, index: 6}, 
     // American : {status: false, index: 7},
     // Mediterranean : {status: false, index: 8}
-    
+   
 
     return (
         <div className = 'favesform-wrapper'>
