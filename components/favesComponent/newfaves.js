@@ -1,4 +1,4 @@
-import React, {useRef, useEffect} from "react";
+import React, {useRef} from "react";
 import { updateFoodPreferences } from "../../firebase/setdatafirebase";
 
 const FavesForm = (props) => {

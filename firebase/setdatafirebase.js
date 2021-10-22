@@ -5,6 +5,7 @@ import {app} from './clientApp.js'
 export async function createUserinDB(name, email, uid){
     const db = getDatabase();
     let foodPreferenceState = {
+<<<<<<< HEAD
         Indian : false,
         Italian : false,
         Japanese : false,  
@@ -14,6 +15,17 @@ export async function createUserinDB(name, email, uid){
         Mexican : false,
         American : false,
         Mediterranean : false, 
+=======
+        Indian : {status: false, index: 0},
+        Italian : {status: false, index: 1},
+        Japanese : {status: false, index: 2}, 
+        Chinese : {status: false, index: 3},
+        Thai : {status: false, index: 4}, 
+        Korean : {status: false, index: 5},
+        Mexican : {status: false, index: 6}, 
+        American : {status: false, index: 7},
+        Mediterranean : {status: false, index: 8}
+>>>>>>> 58efff368e90ac62cea2514485e1661857e4e620
     }
     set(ref(db, 'users/' + uid), {
         username: name,
