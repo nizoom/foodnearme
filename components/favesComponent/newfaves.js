@@ -1,50 +1,29 @@
-import React, {useRef} from "react";
+import React, {useRef, useEffect} from "react";
 import { updateFoodPreferences } from "../../firebase/setdatafirebase";
 
 const FavesForm = (props) => {
-    const favesObj = props.currentFavesState.foodPreferences
+    const favesState = props.currentFavesState.foodPreferences;
 
-
-    console.log(favesObj)
-    let activeFaves = [];
-
+    console.log(favesState)
     // each checkbox needs to get its status from the favesObj because that is up to date 
 
-    //to add new faves
-
-    //default preferences
-    let foodPreferenceState = {
-        Indian : false,
-        Italian : false,
-        Japanese : false, 
-        Chinese : false,
-        Thai : false, 
-        Korean : false,
-        Mexican : false, 
-        American : false,
-        Mediterranean : false
-    }
 
     function handleSavePreferences (e) {
         e.preventDefault();
          //call function to update preferences on firebase db 
-
-        updateFoodPreferences(props.uid, foodPreferenceState)
+        updateFoodPreferences(props.uid, favesState)
     }
 
     function handleCheckChange(e){
+        //update front end 
         let checkStatus = e.target.checked;
         let foodType = e.target.value;
         //update state w o rerender
-        foodPreferenceState.[foodType].status = checkStatus;
+        favesState.[foodType] = checkStatus;
         
     }
 
-    const checkRef = useRef();
-    function assignCheck(){
-        checkRef.current.checked = true;
-    }
-
+    //enables checkboxes to be checked programatically 
     const IndianRef = useRef();
     const ItalianRef = useRef()
     const JapaneseRef = useRef()
@@ -57,19 +36,18 @@ const FavesForm = (props) => {
 
 
     useEffect (() => {
-        for (const property in favesObj) {
-            // console.log([property])
-            if(favesObj[property].status){
+        for (const property in favesState) {
+            if(favesState[property]){
                 console.log(property)
-                //find the index of the property
-                //set checkbox to true
+            
+                //set checkbox to true programatically based on obj from db 
                 assignCheckStatus(property)
             } 
         }
     }, [])
 
    
-
+    //assigns checkbox status based on preference state from db 
     function assignCheckStatus(cuisine){
        
        switch(cuisine){
@@ -98,23 +76,13 @@ const FavesForm = (props) => {
                 AmericanRef.current.checked = true;
                 break;
             case 'Mediterranean':
-                Mediterranean.current.checked = true;
+                MediterraneanRef.current.checked = true;
                 break;
 
        }
-        //console.log(allRefs[0].current)
-        // = true;
+  
     }
-    // Indian : {status: false, index: 0},
-    // Italian : {status: false, index: 1},
-    // Japanese : {status: false, index: 2}, 
-    // Chinese : {status: false, index: 3},
-    // Thai : {status: false, index: 4}, 
-    // Korean : {status: false, index: 5},
-    // Mexican : {status: false, index: 6}, 
-    // American : {status: false, index: 7},
-    // Mediterranean : {status: false, index: 8}
-   
+  
 
     return (
         <div className = 'favesform-wrapper'>
@@ -158,28 +126,18 @@ const FavesForm = (props) => {
                 <button type = "submit"> Save preferences </button>
             </form>
 
-            <div className = 'test'>
-                    <label htmlFor='test'> test</label>
-                    <input type="checkbox" name = 'test' value = 'test' ref = {checkRef}/>
-                </div>
             
-            <button onClick = {assignCheck}> set checkbox status</button>
         </div>
     )
 }
 
 export default FavesForm
 
-   // (function () {
-    //     for (const property in favesObj) {
-    //        // console.log([property])
-    //         if(favesObj[property]){
-                
-    //             activeFaves.push([property])
-    //         } else {
-    //             //activeFaves.push(`${property} is not an active fave`)
-    //         }
-    //     }
-    // })();
 
-    // console.log(activeFaves)
+{/* <div className = 'test'>
+                    <label htmlFor='test'> test</label>
+                    <input type="checkbox" name = 'test' value = 'test' ref = {checkRef}/>
+                </div>
+            
+            <button onClick = {assignCheck}> set checkbox status</button> */}
+

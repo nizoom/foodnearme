@@ -35,7 +35,6 @@ export default function Home() {
 
     //console.log(userData)
     setFoodPrefsFromDB(userData.foodPreferences);
-    console.log(userData.foodPreferences)
     const name = userData.username;
     setUsername(name);
   }
