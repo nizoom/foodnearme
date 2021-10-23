@@ -10,7 +10,7 @@ import { formattedUid } from '../firebase/setdatafirebase'
 import Script from 'next/script'
 
 
-import SpecificFoodForm from '../components/specificfoodform'
+import SpecificFoodForm from '../components/lookforfoodform'
 import FaveSection from '../components/favesComponent/favesection'
 
 export default function Home() {

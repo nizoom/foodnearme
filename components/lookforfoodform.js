@@ -1,8 +1,7 @@
 import React, {useRef} from "react";
 import { useRouter } from "next/router"
-
-
-const SpecificFoodForm = (props) => {
+import { getLocation } from "./findfoodfuncs/getlocation";
+const LookforFoodForm = (props) => {
 
     const cuisineRef = useRef();
     const locationRef = useRef();
@@ -21,8 +20,14 @@ const SpecificFoodForm = (props) => {
 
     }
 
-    function handleFaveInit(){
+    async function handleFaveInit(){
         console.log('finding places based on preferences')
+        await getLocation(passCoordinatesToGoogle);
+        
+    }
+
+    function passCoordinatesToGoogle(coordinates){
+        console.log(coordinates)
     }
     return (
 
@@ -32,21 +37,23 @@ const SpecificFoodForm = (props) => {
                 </div>
             
             <form onSubmit = {handleFoodSubmit} className="specific-food-form">
-                <p> Prefer something specific? </p>
+                <p> Or prefer something specific? </p>
                 <div>
                     <label htmlFor ="cuisine"> What cuisine are you in the mood for?</label>
                     <input type="text" name = "cuisine" ref = {cuisineRef}/>
                 </div>
+               
                 <div>
-                    <label htmlFor="locaton"> Location: </label>
-                     <input type = "text" name = "location" ref = {locationRef}/>
-                </div>
-                <div>
-                    <button type = "submit"> Submit </button>
+                    <button type = "submit"> Go! </button>
                 </div>
             </form>
         </div>
     )
 }
 
-export default SpecificFoodForm;
+export default LookforFoodForm;
+
+{/* <div>
+<label htmlFor="locaton"> Location: </label>
+ <input type = "text" name = "location" ref = {locationRef}/>
+</div> */}
