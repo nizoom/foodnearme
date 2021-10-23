@@ -48,11 +48,11 @@ export default function Home() {
     setFoodPrefsFromDB(null)
   }
 
+  const mapsLibraryScript = `https://maps.googleapis.com/maps/api/js?key=${process.env.NEXT_PUBLIC_GOOGLE_KEY}&libraries=places&callback=../apifuncs/getfood`
 
   return (
     <div> 
-      <Script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCjYaPndbfufJc-FoD7jZhA_FWa85FP2QA&libraries=places&callback=../apifuncs/getfood"
-        />
+      
         <LogoutBtn currentUser = {user} clearHomeScreen = {logoutClearsScreen}/>
         <h1 style = {{margin: "10px"}}>Welcome to Food Near Me</h1>
         
@@ -67,9 +67,16 @@ export default function Home() {
           </div>
           }
           
-          
+          <Script src= {mapsLibraryScript}
+        />
+        
           
     </div>
   )
 }
-//food form should be conditional 
+
+{/* <>
+<Script src={placesLibraryScript} />
+</> */}
+
+//const placesLibraryScript = `https://maps.googleapis.com/maps/api/js?key=${process.env.NEXT_PUBLIC_GOOGLE_KEY}&libraries=places&callback=`

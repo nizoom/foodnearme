@@ -1,4 +1,4 @@
-import React, {useRef} from "react";
+import React, {useRef, useState} from "react";
 import { useRouter } from "next/router"
 import { getLocation } from "./findfoodfuncs/getlocation";
 const LookforFoodForm = (props) => {
@@ -6,8 +6,9 @@ const LookforFoodForm = (props) => {
     const cuisineRef = useRef();
     const locationRef = useRef();
     const router = useRouter();
+    const [addressField, setAddressField] = useState(false)
 
-    function handleFoodSubmit (e){
+    function handleCustomFoodSubmit (e){
         e.preventDefault();
         const [cuisineValue, locationValue] = [cuisineRef.current.value, locationRef.current.value]
         console.log("submitted")
@@ -22,12 +23,18 @@ const LookforFoodForm = (props) => {
 
     async function handleFaveInit(){
         console.log('finding places based on preferences')
-        await getLocation(passCoordinatesToGoogle);
+        await getLocation(passCoordinatesToGoogle, geolocationRejected);
         
     }
 
-    function passCoordinatesToGoogle(coordinates){
+    function passCoordinatesToGoogle(coordinates){ // coordinates through built in browser geolocation
         console.log(coordinates)
+    }
+
+    function geolocationRejected(){ // init manual address input from user
+        console.log('please enter your address')
+        setAddressField(true)
+
     }
     return (
 
@@ -36,7 +43,7 @@ const LookforFoodForm = (props) => {
                      <button onClick = {handleFaveInit}> <h3> Find food based on your faves </h3> </button>
                 </div>
             
-            <form onSubmit = {handleFoodSubmit} className="specific-food-form">
+            <form onSubmit = {handleCustomFoodSubmit} className="specific-food-form">
                 <p> Or prefer something specific? </p>
                 <div>
                     <label htmlFor ="cuisine"> What cuisine are you in the mood for?</label>
@@ -46,6 +53,10 @@ const LookforFoodForm = (props) => {
                 <div>
                     <button type = "submit"> Go! </button>
                 </div>
+                { addressField ? <div>
+                        <label htmlFor="locaton"> Location: </label>
+                        <input type = "text" name = "location" ref = {locationRef}/>
+                    </div> : null }
             </form>
         </div>
     )
