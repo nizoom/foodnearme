@@ -53,10 +53,7 @@ const LookforFoodForm = (props) => {
                 <div>
                     <button type = "submit"> Go! </button>
                 </div>
-                { addressField ? <div>
-                        <label htmlFor="locaton"> Location: </label>
-                        <input type = "text" name = "location" ref = {locationRef}/>
-                    </div> : null }
+                
             </form>
         </div>
     )
@@ -64,7 +61,7 @@ const LookforFoodForm = (props) => {
 
 export default LookforFoodForm;
 
-{/* <div>
-<label htmlFor="locaton"> Location: </label>
- <input type = "text" name = "location" ref = {locationRef}/>
-</div> */}
+// { addressField ? <div>
+//     <label htmlFor="locaton"> Location: </label>
+//     <input type = "text" name = "location" ref = {locationRef}/>
+// </div> : null }

@@ -7,11 +7,11 @@ import {useAuthState} from "react-firebase-hooks/auth"
 import {getAuth} from "firebase/auth"
 import { getUserData } from '../firebase/getdatafirebase'
 import { formattedUid } from '../firebase/setdatafirebase'
-import Script from 'next/script'
 
 
 import SpecificFoodForm from '../components/lookforfoodform'
 import FaveSection from '../components/favesComponent/favesection'
+import AutoCompleteInput from '../components/autocompleteinput'
 
 export default function Home() {
   
@@ -48,11 +48,15 @@ export default function Home() {
     setFoodPrefsFromDB(null)
   }
 
-  const mapsLibraryScript = `https://maps.googleapis.com/maps/api/js?key=${process.env.NEXT_PUBLIC_GOOGLE_KEY}&libraries=places&callback=../apifuncs/getfood`
+  const mapsLibraryScript = `https://maps.googleapis.com/maps/api/js?key=${process.env.NEXT_PUBLIC_GOOGLE_KEY}&libraries=places`
+
 
   return (
     <div> 
-      
+        <Head>
+            <script async defer src ={mapsLibraryScript}/>
+          </Head>
+
         <LogoutBtn currentUser = {user} clearHomeScreen = {logoutClearsScreen}/>
         <h1 style = {{margin: "10px"}}>Welcome to Food Near Me</h1>
         
@@ -66,17 +70,11 @@ export default function Home() {
             <FaveSection currentFavesState = {foodPrefsFromDB} uid = {userID}/> 
           </div>
           }
+
+          <AutoCompleteInput/>
           
-          <Script src= {mapsLibraryScript}
-        />
         
           
     </div>
   )
 }
-
-{/* <>
-<Script src={placesLibraryScript} />
-</> */}
-
-//const placesLibraryScript = `https://maps.googleapis.com/maps/api/js?key=${process.env.NEXT_PUBLIC_GOOGLE_KEY}&libraries=places&callback=`
