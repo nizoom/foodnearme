@@ -9,9 +9,8 @@ import { getUserData } from '../firebase/getdatafirebase'
 import { formattedUid } from '../firebase/setdatafirebase'
 
 
-import SpecificFoodForm from '../components/lookforfoodform'
+import SpecificFoodForm from '../components/lookforfoodwrapper'
 import FaveSection from '../components/favesComponent/favesection'
-import AutoCompleteInput from '../components/autocompleteinput'
 
 export default function Home() {
   
@@ -23,7 +22,7 @@ export default function Home() {
   
   //console.log(`Loading: ${loading} | Current user: ${user}`)
   
-  const welcomeStatement = `Welcome ${username}, what are ya hungry for?`
+  const welcomeStatement = `Welcome ${username}, search for food based on your: `
 
 
   async function getDataFromUid (){
@@ -70,9 +69,6 @@ export default function Home() {
             <FaveSection currentFavesState = {foodPrefsFromDB} uid = {userID}/> 
           </div>
           }
-
-          <AutoCompleteInput/>
-          
         
           
     </div>

@@ -17,3 +17,26 @@
     flex-direction: column;
     text-align: center;
 }
+
+.user-path-wrapper{
+    display: flex;
+    flex-direction: row;
+    margin: 20px;
+    justify-content: center;
+}
+
+.user-path-item{
+    margin: 10px;
+}
+
+.specific-food-box{
+    border: 2px solid black;
+    width: 150px;
+    height: 100px;
+    
+}
+
+.specific-food-box input{
+    height: 20px;
+    width: 20px;
+}

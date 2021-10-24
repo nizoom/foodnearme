@@ -1,9 +1,6 @@
-export async function getLocation(callback){
+export async function getLocation(successCallback, rejectionCallback){
 
-    // const callback = () => {
-    //     console.log('fired')
-    //     console.log(crd.latitude + " and " + crd.longitude)
-    // }
+    
 
     var options = {
         enableHighAccuracy: true,
@@ -17,12 +14,13 @@ export async function getLocation(callback){
         // console.log(`Latitude : ${crd.latitude}`);
         // console.log(`Longitude: ${crd.longitude}`);
         // console.log(`More or less ${crd.accuracy} meters.`);
-         callback( [crd.latitude, crd.longitude] )
+        successCallback( [crd.latitude, crd.longitude] )
         
     }
     
     function error(err) {
         console.warn(`ERROR(${err.code}): ${err.message}`);
+        rejectionCallback()
     }
     
     //const coords = await navigator.geolocation.getCurrentPosition(success, error, options);

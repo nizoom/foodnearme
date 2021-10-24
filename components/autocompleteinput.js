@@ -40,10 +40,10 @@ import {
         >
           {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
             <div>
-                
+                <label> Enter your address </label>
                 <input
                     {...getInputProps({
-                    placeholder: 'Search Places ...',
+                    placeholder: '...',
                     className: 'location-search-input',
                     })}
                 />

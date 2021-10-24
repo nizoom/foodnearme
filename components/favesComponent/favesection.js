@@ -1,6 +1,5 @@
 import React from "react";
 import FavesForm from "./newfaves"
-import CurrentFaves from "./currentfaves";
 const FaveSection = (props) => {
     return (
         <div className = "favesection-wrapper">
