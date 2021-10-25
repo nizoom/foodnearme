@@ -1,6 +1,6 @@
 export async function getLocation(successCallback, rejectionCallback){
 
-    
+
 
     var options = {
         enableHighAccuracy: true,
@@ -24,7 +24,7 @@ export async function getLocation(successCallback, rejectionCallback){
     }
     
     //const coords = await navigator.geolocation.getCurrentPosition(success, error, options);
-    navigator.geolocation.getCurrentPosition(success, error, options);
+    await navigator.geolocation.getCurrentPosition(success, error, options);
     // console.log(coords)
 
 }

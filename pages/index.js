@@ -9,7 +9,7 @@ import { getUserData } from '../firebase/getdatafirebase'
 import { formattedUid } from '../firebase/setdatafirebase'
 
 
-import SpecificFoodForm from '../components/lookforfoodwrapper'
+import LookforFoodWrapper from '../components/lookforfoodwrapper'
 import FaveSection from '../components/favesComponent/favesection'
 
 export default function Home() {
@@ -64,7 +64,7 @@ export default function Home() {
             <h2 style = {{margin: '10px'}}>
             {welcomeStatement}</h2> 
               
-            <SpecificFoodForm/>
+            <LookforFoodWrapper currentFavesState = {foodPrefsFromDB}/>
             
             <FaveSection currentFavesState = {foodPrefsFromDB} uid = {userID}/> 
           </div>

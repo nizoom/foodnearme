@@ -4,14 +4,18 @@ import { getLocation } from "./findfoodfuncs/getlocation";
 import LocationSearchInput from "./autocompleteinput";
 import FavesBoxSelector from "./uibtns/favefoosdsbox";
 import SpecificFoodBox from "./uibtns/specificfoodbox";
+import { findFood } from "./findfoodfuncs/findfood";
 
 const LookforFoodWrapper= (props) => {
 
    
-    const locationRef = useRef();
+  
     const router = useRouter();
     const [addressField, setAddressField] = useState(false)
     const [coords, setCoords] = useState(false)
+
+    //determines by which method the user is looking for restaurants either through faves or a speicifc cuisine
+    const [foodSearchPath, setFoodSearchPath] = useState('null');
 
     function initFoodFind (){
         //if true then the user wants to use their faves  / else they want a specific cuisine 
@@ -19,46 +23,62 @@ const LookforFoodWrapper= (props) => {
     }
 
     useEffect(() => {
-        if(!coords){
-            setTimeout(() => {getLocation(passCoordinatesToGoogle, geolocationRejected)}, 5000)
+        if(!coords){ //get location via the client or via address bar
+            getLocation(coordinatesCallback, geolocationRejected)
+            // setTimeout(() => {getLocation(coordinatesCallback, geolocationRejected)}, 1000)
         }
     })
+
     function handleCustomFoodSubmit (e){
         e.preventDefault();
-        const [cuisineValue, locationValue] = [cuisineRef.current.value, locationRef.current.value]
+        const cuisineValue = cuisineRef.current.value
         console.log("submitted")
-        console.log(`${cuisineValue} and ${locationValue}`)
-        //validate form
-        //if valid
-        //reset to blank
+        console.log(`${cuisineValue}`)
+        
         cuisineRef.current.value = ""
-        router.push(`/posts/${cuisineValue}`)
+        //initPlacesRequest(coords)
+        // router.push(`/posts/${cuisineValue}`)
 
     }
 
-    async function handleFaveInit(){
+    function handleFaveInit(){
         console.log('finding places based on preferences')
+        initPlacesRequest(coords)
         //await getLocation(passCoordinatesToGoogle, geolocationRejected);
         
     }
 
-    function passCoordinatesToGoogle(coordinates){ // coordinates through built in browser geolocation
-        setCoords(coordinates)
+    //retrieves coordinates from getLocation in useeffect block
+    function coordinatesCallback(coordinates){
         console.log(coordinates)
+        setCoords(coordinates)
     }
 
+   
+    //if location services are blocked then activate address field
     function geolocationRejected(){ // init manual address input from user
         console.log('please enter your address')
         setAddressField(true) 
 
     }
 
-    const [foodSearchPath, setFoodSearchPath] = useState('null');
+    //get coordinates from filled out address bar
+    function getCoordsFromAddress(coordinates){
+        console.log(coordinates)
+        setCoords(coordinates)
+    }
+
+  
 
     function checkboxChange(){
         //change from faves to specific cuisine
         console.log('changed')
         setFoodSearchPath(!foodSearchPath)
+    }
+
+    function initPlacesRequest(coordinates){ // coordinates through built in browser geolocation
+      
+        findFood(coords, process.env.NEXT_PUBLIC_GOOGLE_KEY, props.currentFavesState)
     }
     return (
 
@@ -73,21 +93,7 @@ const LookforFoodWrapper= (props) => {
 
 
 
-
-
-             {/* <div>
-                     <button onClick = {handleFaveInit}> <h3> Find food based on your faves </h3> </button>
-                </div>
-                
-                
-            
-            <form onSubmit = {handleCustomFoodSubmit} className="specific-food-form">
-                <p> Or prefer something specific? </p>
-                <div>
-                    <label htmlFor ="cuisine"> What cuisine are you in the mood for?</label>
-                    <input type="text" name = "cuisine" ref = {cuisineRef}/>
-                </div> */}
-                {addressField ?<div> <LocationSearchInput/> </div> : null }
+                {!addressField ?<div> <LocationSearchInput getCoordsFromAddress = {getCoordsFromAddress}/> </div> : null }
                 <div>
                     <button type = "submit" onClick = {initFoodFind}> Go! </button>
                 </div>
@@ -105,3 +111,17 @@ export default LookforFoodWrapper;
 //     <label htmlFor="locaton"> Location: </label>
 //     <input type = "text" name = "location" ref = {locationRef}/>
 // </div> : null }
+
+
+{/* <div>
+                     <button onClick = {handleFaveInit}> <h3> Find food based on your faves </h3> </button>
+                </div>
+                
+                
+            
+            <form onSubmit = {handleCustomFoodSubmit} className="specific-food-form">
+                <p> Or prefer something specific? </p>
+                <div>
+                    <label htmlFor ="cuisine"> What cuisine are you in the mood for?</label>
+                    <input type="text" name = "cuisine" ref = {cuisineRef}/>
+                </div> */}

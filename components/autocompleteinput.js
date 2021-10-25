@@ -26,8 +26,9 @@ import {
       geocodeByAddress(address)
         .then(results => getLatLng(results[0]))
         .then(latLng => {
-          console.log('Success', latLng)
+          console.log('Success')
           this.setState({address})
+          this.props.getCoordsFromAddress(latLng)
         })
         .catch(error => console.error('Error', error));
     };

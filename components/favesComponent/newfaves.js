@@ -4,7 +4,7 @@ import { updateFoodPreferences } from "../../firebase/setdatafirebase";
 const FavesForm = (props) => {
     const favesState = props.currentFavesState.foodPreferences;
 
-    console.log(favesState)
+    //console.log(favesState)
     // each checkbox needs to get its status from the favesObj because that is up to date 
 
 
@@ -38,7 +38,7 @@ const FavesForm = (props) => {
     useEffect (() => {
         for (const property in favesState) {
             if(favesState[property]){
-                console.log(property)
+                //console.log(property)
             
                 //set checkbox to true programatically based on obj from db 
                 assignCheckStatus(property)
