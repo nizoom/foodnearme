@@ -1,4 +1,4 @@
-import React, {useRef, useState} from "react";
+import React, {useRef, useState, useEffect} from "react";
 import { useRouter } from "next/router"
 import { getLocation } from "./findfoodfuncs/getlocation";
 import LocationSearchInput from "./autocompleteinput";
@@ -7,11 +7,22 @@ import SpecificFoodBox from "./uibtns/specificfoodbox";
 
 const LookforFoodWrapper= (props) => {
 
-    const cuisineRef = useRef();
+   
     const locationRef = useRef();
     const router = useRouter();
     const [addressField, setAddressField] = useState(false)
+    const [coords, setCoords] = useState(false)
 
+    function initFoodFind (){
+        //if true then the user wants to use their faves  / else they want a specific cuisine 
+        foodSearchPath ? handleFaveInit() : handleCustomFoodSubmit ();
+    }
+
+    useEffect(() => {
+        if(!coords){
+            setTimeout(() => {getLocation(passCoordinatesToGoogle, geolocationRejected)}, 5000)
+        }
+    })
     function handleCustomFoodSubmit (e){
         e.preventDefault();
         const [cuisineValue, locationValue] = [cuisineRef.current.value, locationRef.current.value]
@@ -27,21 +38,22 @@ const LookforFoodWrapper= (props) => {
 
     async function handleFaveInit(){
         console.log('finding places based on preferences')
-        await getLocation(passCoordinatesToGoogle, geolocationRejected);
+        //await getLocation(passCoordinatesToGoogle, geolocationRejected);
         
     }
 
     function passCoordinatesToGoogle(coordinates){ // coordinates through built in browser geolocation
+        setCoords(coordinates)
         console.log(coordinates)
     }
 
     function geolocationRejected(){ // init manual address input from user
         console.log('please enter your address')
-        setAddressField(true)
+        setAddressField(true) 
 
     }
 
-    const [foodSearchPath, setFoodSearchPath] = useState(true);
+    const [foodSearchPath, setFoodSearchPath] = useState('null');
 
     function checkboxChange(){
         //change from faves to specific cuisine
@@ -67,7 +79,7 @@ const LookforFoodWrapper= (props) => {
                      <button onClick = {handleFaveInit}> <h3> Find food based on your faves </h3> </button>
                 </div>
                 
-                {addressField ? <LocationSearchInput/> : null }
+                
             
             <form onSubmit = {handleCustomFoodSubmit} className="specific-food-form">
                 <p> Or prefer something specific? </p>
@@ -75,9 +87,9 @@ const LookforFoodWrapper= (props) => {
                     <label htmlFor ="cuisine"> What cuisine are you in the mood for?</label>
                     <input type="text" name = "cuisine" ref = {cuisineRef}/>
                 </div> */}
-               
+                {addressField ?<div> <LocationSearchInput/> </div> : null }
                 <div>
-                    <button type = "submit"> Go! </button>
+                    <button type = "submit" onClick = {initFoodFind}> Go! </button>
                 </div>
 
                 

@@ -13,7 +13,7 @@ import {
   
     constructor(props) {
       super(props);
-      this.state = { address: '', googleMapsReady: false, };
+      this.state = { address: '' };
 
     
     }
@@ -25,7 +25,10 @@ import {
     handleSelect = address => {
       geocodeByAddress(address)
         .then(results => getLatLng(results[0]))
-        .then(latLng => console.log('Success', latLng))
+        .then(latLng => {
+          console.log('Success', latLng)
+          this.setState({address})
+        })
         .catch(error => console.error('Error', error));
     };
    
