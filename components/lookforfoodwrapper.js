@@ -4,7 +4,7 @@ import { getLocation } from "./findfoodfuncs/getlocation";
 import LocationSearchInput from "./autocompleteinput";
 import FavesBoxSelector from "./uibtns/favefoosdsbox";
 import SpecificFoodBox from "./uibtns/specificfoodbox";
-import { findFood } from "./findfoodfuncs/findfood";
+import { findFood } from "../pages/[restaurants]";
 
 const LookforFoodWrapper= (props) => {
 
@@ -13,6 +13,7 @@ const LookforFoodWrapper= (props) => {
     const router = useRouter();
     const [addressField, setAddressField] = useState(false)
     const [coords, setCoords] = useState(false)
+  
 
     //determines by which method the user is looking for restaurants either through faves or a speicifc cuisine
     const [foodSearchPath, setFoodSearchPath] = useState('null');
@@ -77,8 +78,10 @@ const LookforFoodWrapper= (props) => {
     }
 
     function initPlacesRequest(coordinates){ // coordinates through built in browser geolocation
-      
-        findFood(coords, process.env.NEXT_PUBLIC_GOOGLE_KEY, props.currentFavesState)
+        // let test = {test: 'test'} 
+        // const { test } = router.query
+        router.push({pathname : '/restaurants', query: {params : 'restaurants/0,0/thai'}})
+        //findFood(coords, process.env.NEXT_PUBLIC_GOOGLE_KEY, props.currentFavesState)
     }
     return (
 
