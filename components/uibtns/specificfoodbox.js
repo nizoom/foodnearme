@@ -8,20 +8,28 @@ const SpecificFoodBox = (props) => {
         !props.checkboxStatus? checkboxRef.current.checked = true : checkboxRef.current.checked = false;
 
     }, [props.checkboxStatus])
+
+    function handleInputChange(event){
+        cuisineRef.current = event.target.value
+    }
     return (
-        
+        <div className = 'specific-food-box-wrapper'>
         <div className='specific-food-box'>
             <p>a specific cuisine </p>
             <input type = 'checkbox' onChange={props.checkboxChange} ref = {checkboxRef}/>
-
             {!props.checkboxStatus ? 
-                <div>
+            <div>
+                <form>
                     <label htmlFor ="cuisine"> What cuisine are you in the mood for?</label>
-                    <input type="text" name = "cuisine" ref = {cuisineRef}/>
-                </div> : null
+                    <input type="text" name = "cuisine" ref = {cuisineRef} onChange={(e) => handleInputChange(e)}/>
+                </form>
+            </div> : null
+    
+           }
         
-        }
         </div>
+          
+    </div>
     )
 }
 

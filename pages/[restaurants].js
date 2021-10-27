@@ -3,10 +3,11 @@ export async function getServerSideProps(context) {
 
     //extracting cuisines and coordinates from context.query object 
     const {cuisines, params: coordinates } = context.query 
-  
 
-    const url= `https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${coordinates[0]}%${coordinates[1]}&radius=1500&type=restaurant&keyword=thai&key=${process.env.NEXT_PUBLIC_GOOGLE_KEY}`
+    console.log(`${cuisines}`)
+    const url= `https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${coordinates[0]}%2C${coordinates[1]}&radius=1500&opennow&type=restaurant&keyword=${cuisines}&key=${process.env.NEXT_PUBLIC_GOOGLE_KEY}`
     //-33.8670522%2C151.1957362
+    //http://localhost:3000/restaurants?params=40.6679302&params=-73.982728&cuisines=American&cuisines=Chinese&cuisines=Italian
 
     const response = await fetch (url)
     const data = await response.json()

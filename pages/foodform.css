@@ -31,8 +31,8 @@
 
 .specific-food-box{
     border: 2px solid black;
-    width: 150px;
-    height: 100px;
+    width: 250px;
+    height: 200px;
     
 }
 
@@ -43,4 +43,20 @@
 
 .autocomplete-div{
     margin: 20px;
+}
+
+.specific-food-box-wrapper{
+    text-align: center;
+}
+
+.specific-food-box form{
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center
+}
+
+.specific-food-box input{
+    width: 90%;
+    margin: 10px auto auto auto;
 }
