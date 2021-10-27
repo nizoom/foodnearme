@@ -1,12 +1,12 @@
 export async function getServerSideProps(context) {
     //context provides the location and cuisine types
 
-     
-    const query = context.query
+    //extracting cuisines and coordinates from context.query object 
+    const {cuisines, params: coordinates } = context.query 
   
 
-    const url= `https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=-33.8670522%2C151.1957362&radius=1500&type=restaurant&keyword=cruise&key=${process.env.NEXT_PUBLIC_GOOGLE_KEY}`
-    
+    const url= `https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${coordinates[0]}%${coordinates[1]}&radius=1500&type=restaurant&keyword=thai&key=${process.env.NEXT_PUBLIC_GOOGLE_KEY}`
+    //-33.8670522%2C151.1957362
 
     const response = await fetch (url)
     const data = await response.json()
@@ -18,7 +18,7 @@ export async function getServerSideProps(context) {
     }
   
     return {
-      props: {restaurants: data.results, context: query},//{ restaurants : data.results }, // will be passed to the page component as props
+      props: {restaurants: data.results, context:  coordinates},//{ restaurants : data.results }, // will be passed to the page component as props
     }
   }
   

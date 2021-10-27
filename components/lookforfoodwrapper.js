@@ -4,7 +4,7 @@ import { getLocation } from "./findfoodfuncs/getlocation";
 import LocationSearchInput from "./autocompleteinput";
 import FavesBoxSelector from "./uibtns/favefoosdsbox";
 import SpecificFoodBox from "./uibtns/specificfoodbox";
-import { findFood } from "../pages/[restaurants]";
+import { sortFaves } from "./findfoodfuncs/sortfaves";
 
 const LookforFoodWrapper= (props) => {
 
@@ -13,12 +13,14 @@ const LookforFoodWrapper= (props) => {
     const router = useRouter();
     const [addressField, setAddressField] = useState(false)
     const [coords, setCoords] = useState(false)
+    const [locationMessage, setLocationMessage] = useState('Assessing location...')
   
 
     //determines by which method the user is looking for restaurants either through faves or a speicifc cuisine
     const [foodSearchPath, setFoodSearchPath] = useState('null');
 
     function initFoodFind (){
+       
         //if true then the user wants to use their faves  / else they want a specific cuisine 
         foodSearchPath ? handleFaveInit() : handleCustomFoodSubmit ();
     }
@@ -26,7 +28,7 @@ const LookforFoodWrapper= (props) => {
     useEffect(() => {
         if(!coords){ //get location via the client or via address bar
             getLocation(coordinatesCallback, geolocationRejected)
-            // setTimeout(() => {getLocation(coordinatesCallback, geolocationRejected)}, 1000)
+            //console.log(props.currentFavesState.foodPreferences)
         }
     })
 
@@ -42,9 +44,11 @@ const LookforFoodWrapper= (props) => {
 
     }
 
-    function handleFaveInit(){
+    async function handleFaveInit(){
         console.log('finding places based on preferences')
-        initPlacesRequest(coords)
+         const sortedFaves = await sortFaves(props.currentFavesState.foodPreferences)
+
+        initPlacesRequest(coords, sortedFaves)
         //await getLocation(passCoordinatesToGoogle, geolocationRejected);
         
     }
@@ -60,6 +64,7 @@ const LookforFoodWrapper= (props) => {
     function geolocationRejected(){ // init manual address input from user
         console.log('please enter your address')
         setAddressField(true) 
+        setLocationMessage('Awaiting location')
 
     }
 
@@ -77,11 +82,11 @@ const LookforFoodWrapper= (props) => {
         setFoodSearchPath(!foodSearchPath)
     }
 
-    function initPlacesRequest(coordinates){ // coordinates through built in browser geolocation
-        // let test = {test: 'test'} 
-        // const { test } = router.query
-        router.push({pathname : '/restaurants', query: {params : 'restaurants/0,0/thai'}})
-        //findFood(coords, process.env.NEXT_PUBLIC_GOOGLE_KEY, props.currentFavesState)
+    function initPlacesRequest(coordinates, cuisines){ 
+        console.log(coordinates)
+        if(coordinates){
+            router.push({pathname : '/restaurants', query: {params : coordinates, cuisines}})
+        }
     }
     return (
 
@@ -96,10 +101,10 @@ const LookforFoodWrapper= (props) => {
 
 
 
-                {!addressField ?<div> <LocationSearchInput getCoordsFromAddress = {getCoordsFromAddress}/> </div> : null }
-                <div>
+                {addressField ?<div> <LocationSearchInput getCoordsFromAddress = {getCoordsFromAddress}/> </div> : null }
+                {!coords ? <h3> {locationMessage}</h3>:<div>
                     <button type = "submit" onClick = {initFoodFind}> Go! </button>
-                </div>
+                </div>}
 
                 
                 
@@ -109,22 +114,3 @@ const LookforFoodWrapper= (props) => {
 }
 
 export default LookforFoodWrapper;
-
-// { addressField ? <div>
-//     <label htmlFor="locaton"> Location: </label>
-//     <input type = "text" name = "location" ref = {locationRef}/>
-// </div> : null }
-
-
-{/* <div>
-                     <button onClick = {handleFaveInit}> <h3> Find food based on your faves </h3> </button>
-                </div>
-                
-                
-            
-            <form onSubmit = {handleCustomFoodSubmit} className="specific-food-form">
-                <p> Or prefer something specific? </p>
-                <div>
-                    <label htmlFor ="cuisine"> What cuisine are you in the mood for?</label>
-                    <input type="text" name = "cuisine" ref = {cuisineRef}/>
-                </div> */}
