@@ -14,7 +14,7 @@ const LookforFoodWrapper= (props) => {
     const [addressField, setAddressField] = useState(false)
     const [coords, setCoords] = useState(false)
     const [locationMessage, setLocationMessage] = useState('Assessing location...')
-  
+    const [customCuisine, setCustomCuisine] = useState('')
 
     //determines by which method the user is looking for restaurants either through faves or a speicifc cuisine
     const [foodSearchPath, setFoodSearchPath] = useState('null');
@@ -32,16 +32,18 @@ const LookforFoodWrapper= (props) => {
         }
     })
 
-    function handleCustomFoodSubmit (e){
-        e.preventDefault();
-        const cuisineValue = cuisineRef.current.value
-        console.log("submitted")
-        console.log(`${cuisineValue}`)
-        
-        cuisineRef.current.value = ""
-        //initPlacesRequest(coords)
-        // router.push(`/posts/${cuisineValue}`)
 
+    function handleCustomFoodSubmit (e){
+        if(!customCuisine == null){
+            initPlacesRequest(coords, customCuisine)
+        }
+  
+    }
+
+    //gets cuisine name from child component specific specific food box and makes it accessible to parent component
+    function getCustomCuisine(cuisine){ 
+        console.log(cuisine)
+        setCustomCuisine(cuisine)
     }
 
     async function handleFaveInit(){
@@ -96,7 +98,8 @@ const LookforFoodWrapper= (props) => {
 
                 <p className='user-path-item'> Or </p>
 
-                <SpecificFoodBox className='user-path-item'checkboxChange = {checkboxChange} checkboxStatus = {foodSearchPath}/>
+                <SpecificFoodBox className='user-path-item'checkboxChange = {checkboxChange} checkboxStatus = {foodSearchPath} 
+                getCustomCuisine = {getCustomCuisine} inputValidity ={customCuisine}/>
             </div>
 
 

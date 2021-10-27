@@ -11,7 +11,9 @@ const SpecificFoodBox = (props) => {
 
     function handleInputChange(event){
         cuisineRef.current = event.target.value
+        props.getCustomCuisine(cuisineRef.current)
     }
+    console.log(props.inputValidity)
     return (
         <div className = 'specific-food-box-wrapper'>
         <div className='specific-food-box'>
@@ -21,7 +23,9 @@ const SpecificFoodBox = (props) => {
             <div>
                 <form>
                     <label htmlFor ="cuisine"> What cuisine are you in the mood for?</label>
-                    <input type="text" name = "cuisine" ref = {cuisineRef} onChange={(e) => handleInputChange(e)}/>
+                    <input type="text" name = "cuisine" ref = {cuisineRef} onChange={(e) => handleInputChange(e)}
+                        placeholder = {props.inputValidity === '' ? 'Enter a cuisine' : null}
+                    />
                 </form>
             </div> : null
     
