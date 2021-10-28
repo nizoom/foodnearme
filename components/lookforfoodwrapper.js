@@ -83,13 +83,7 @@ const LookforFoodWrapper= (props) => {
     }
 
     async function initPlacesRequest(coordinates, cuisines){ 
-        
-        // const paramsData = await [
-        //  cuisines,
-        //      coordinates
-        // ]
     
-
         const foodParam = cuisines.toString();
         const latParam = coordinates.lat.toString();
         const lngParam = coordinates.lng.toString();
