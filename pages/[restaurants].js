@@ -5,9 +5,6 @@ export async function getServerSideProps(context) {
     console.log(context.query)
     const {foodtypes, lat, lng} = context.query
 
-
-    //const url= `https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=-33.8670522%2C151.1957362&radius=1500&type=restaurant&keyword=cruise&key=AIzaSyCjYaPndbfufJc-FoD7jZhA_FWa85FP2QA`
-
     const nearbyPlacesUrl= `https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${lat}%2C${lng}&radius=1500&type=restaurant&keyword=${foodtypes}&key=${process.env.NEXT_PUBLIC_GOOGLE_KEY}`
  
 
