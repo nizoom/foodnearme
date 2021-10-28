@@ -34,16 +34,14 @@ const LookforFoodWrapper= (props) => {
 
 
     function handleCustomFoodSubmit (e){
-        if(!customCuisine == null){
+        if(customCuisine !== ''){
             initPlacesRequest(coords, customCuisine)
         }
   
     }
 
     //gets cuisine name from child component specific specific food box and makes it accessible to parent component
-    function getCustomCuisine(cuisine){ 
-        console.log(cuisine)
-        setCustomCuisine(cuisine)
+    function getCustomCuisine(cuisine){         setCustomCuisine(cuisine)
     }
 
     async function handleFaveInit(){
@@ -84,10 +82,20 @@ const LookforFoodWrapper= (props) => {
         setFoodSearchPath(!foodSearchPath)
     }
 
-    function initPlacesRequest(coordinates, cuisines){ 
-        console.log(coordinates)
+    async function initPlacesRequest(coordinates, cuisines){ 
+        
+        // const paramsData = await [
+        //  cuisines,
+        //      coordinates
+        // ]
+    
+
+        const foodParam = cuisines.toString();
+        const latParam = coordinates.lat.toString();
+        const lngParam = coordinates.lng.toString();
+
         if(coordinates){
-            router.push({pathname : '/restaurants', query: {params : coordinates, cuisines}})
+            router.push({pathname : '/restaurant',  query : {foodtypes: cuisines, lat: latParam, lng : lngParam}})
         }
     }
     return (
