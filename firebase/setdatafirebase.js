@@ -18,7 +18,7 @@ export async function createUserinDB(name, email, uid){
     set(ref(db, 'users/' + uid), {
         username: name,
         email: email,
-        foodPreferences : foodPreferenceState
+        preferences :  { foodPreferences : foodPreferenceState }
     });
 }
     
@@ -37,12 +37,12 @@ export async function postName(){
 }
 
 
-export function updateFoodPreferences(uid, newfoodobprefs){
+export function updateFoodPreferences(uid, foodPreferences){
     console.log('updating preferences')
     const db = getDatabase();
-
-    set(ref(db, 'users/' + uid + '/foodPreferences'), {
-        foodPreferences : newfoodobprefs
+    //its creating an extra object instead of updating it
+    set(ref(db, 'users/' + uid + `/preferences`), { 
+        foodPreferences
     });
 
 }

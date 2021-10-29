@@ -2,7 +2,7 @@ import React, {useRef, useEffect} from "react";
 import { updateFoodPreferences } from "../../firebase/setdatafirebase";
 
 const FavesForm = (props) => {
-    const favesState = props.currentFavesState.foodPreferences;
+    const favesState = props.currentFavesState;
 
     //console.log(favesState)
     // each checkbox needs to get its status from the favesObj because that is up to date 
@@ -19,6 +19,7 @@ const FavesForm = (props) => {
         let checkStatus = e.target.checked;
         let foodType = e.target.value;
         //update state w o rerender
+        console.log(favesState)
         favesState.[foodType] = checkStatus;
         
     }

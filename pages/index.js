@@ -29,11 +29,12 @@ export default function Home() {
 
     const uid = formattedUid(JSON.stringify(user.uid))
     setUserID(uid);
-    console.log(user.uid)
+   
     const userData = await getUserData(uid)
 
     console.log(userData)
-    setFoodPrefsFromDB(userData.foodPreferences);
+    setFoodPrefsFromDB(userData.preferences.foodPreferences);
+   
     const name = userData.username;
     setUsername(name);
   }
