@@ -9,7 +9,7 @@ import { getUserData } from '../firebase/getdatafirebase'
 import { formattedUid } from '../firebase/setdatafirebase'
 
 
-import LookforFoodWrapper from '../components/lookforfoodwrapper'
+import SelectionUI from '../components/selectionUI'
 import FaveSection from '../components/favesComponent/favesection'
 
 export default function Home() {
@@ -26,20 +26,19 @@ export default function Home() {
 
 
   async function getDataFromUid (){
-    console.log('fired')
 
     const uid = formattedUid(JSON.stringify(user.uid))
     setUserID(uid);
+    console.log(user.uid)
     const userData = await getUserData(uid)
 
-    //console.log(userData)
+    console.log(userData)
     setFoodPrefsFromDB(userData.foodPreferences);
     const name = userData.username;
     setUsername(name);
   }
 
   useEffect(() => {
-    console.log(user)
     user !== null ? getDataFromUid() : null
   }, [user])
 
@@ -49,7 +48,9 @@ export default function Home() {
 
   const mapsLibraryScript = `https://maps.googleapis.com/maps/api/js?key=${process.env.NEXT_PUBLIC_GOOGLE_KEY}&libraries=places`
 
-
+  function noFaveHandler(){ // if user submits a faves request without any saved faves
+    console.log('save some faves below or try a specific cuisine')
+  }
   return (
     <div> 
         <Head>
@@ -64,7 +65,7 @@ export default function Home() {
             <h2 style = {{margin: '10px'}}>
             {welcomeStatement}</h2> 
               
-            <LookforFoodWrapper currentFavesState = {foodPrefsFromDB}/>
+            <SelectionUI currentFavesState = {foodPrefsFromDB} noFaves={noFaveHandler}/>
             
             <FaveSection currentFavesState = {foodPrefsFromDB} uid = {userID}/> 
           </div>

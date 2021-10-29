@@ -1,3 +1,6 @@
+
+import { useRouter } from "next/router";
+
 export async function getServerSideProps(context) {
     //context provides the location and cuisine types
     //extracting cuisines and coordinates from context.query object 
@@ -11,9 +14,13 @@ export async function getServerSideProps(context) {
     const response = await fetch (nearbyPlacesUrl)
     const data = await response.json()
 
+    
     if (!data) {
       return {
-        notFound: true,
+        redirect: {
+          destination: '/',
+          permanent: false,
+        }
       }
     }
 
@@ -93,19 +100,26 @@ export async function getServerSideProps(context) {
     
   }
 
- 
+
 
 const DisplayRestaurants = ({ restaurants }) => {
-    console.log(restaurants)
+    const router = useRouter();
+
+    //console.log(restaurants)
+
+    function goBack(){
+      router.push('./')
+    }
     
     return (
     
         <div>  
+          <button onClick = {goBack}> Back </button>
            <h1> Restaurants </h1>
             {
                 restaurants.map(restaurant => (
                   
-                    <div key = {restaurant.place_id}>
+                    <div key = {restaurant.place_id} className = 'restaurant-wrapper'>
                         <p> {restaurant.name}, {restaurant.rating} ⭐ </p>
                         <p> {restaurant.address_components}</p>
                         <p> Price Level: {restaurant.priceLvl}</p>

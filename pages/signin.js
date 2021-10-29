@@ -33,8 +33,13 @@ function SignInScreen() {
 
     if(loginMethod === "Gmail"){
       const result = await GoogleSignin()
-      console.log(result)
-      resolveLogin(result)
+      if(!result){ //if google sign in for the fist time -> then nickname needs to be set
+        router.push('./nickname')
+      } else {
+        console.log(result)
+        resolveLogin(result)
+      }
+   
     } else {
       const result = await FacebookSignin();
       console.log(result)

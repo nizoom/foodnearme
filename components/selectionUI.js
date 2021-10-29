@@ -1,12 +1,12 @@
-import React, {useRef, useState, useEffect} from "react";
+import React, {useState, useEffect} from "react";
 import { useRouter } from "next/router"
 import { getLocation } from "./findfoodfuncs/getlocation";
 import LocationSearchInput from "./autocompleteinput";
-import FavesBoxSelector from "./uibtns/favefoosdsbox";
-import SpecificFoodBox from "./uibtns/specificfoodbox";
+import FavesBoxSelector from "./userpaths/favefoosdsbox";
+import SpecificFoodBox from "./userpaths/specificfoodbox";
 import { sortFaves } from "./findfoodfuncs/sortfaves";
 
-const LookforFoodWrapper= (props) => {
+const SelectionUI= (props) => {
 
    
   
@@ -26,6 +26,7 @@ const LookforFoodWrapper= (props) => {
     }
 
     useEffect(() => {
+
         if(!coords){ //get location via the client or via address bar
             getLocation(coordinatesCallback, geolocationRejected)
             //console.log(props.currentFavesState.foodPreferences)
@@ -41,22 +42,27 @@ const LookforFoodWrapper= (props) => {
     }
 
     //gets cuisine name from child component specific specific food box and makes it accessible to parent component
-    function getCustomCuisine(cuisine){         setCustomCuisine(cuisine)
+    function getCustomCuisine(cuisine){         
+        setCustomCuisine(cuisine)
     }
 
     async function handleFaveInit(){
         console.log('finding places based on preferences')
-         const sortedFaves = await sortFaves(props.currentFavesState.foodPreferences)
+        const sortedFaves = await sortFaves(props.currentFavesState.foodPreferences)
 
-        initPlacesRequest(coords, sortedFaves)
-        //await getLocation(passCoordinatesToGoogle, geolocationRejected);
-        
+        if(sortedFaves.length>0){
+            initPlacesRequest(coords, sortedFaves)
+        } else {
+            props.noFaves();
+            //if no saved faves tell user to save some
+        }
+            
     }
 
     //retrieves coordinates from getLocation in useeffect block
     function coordinatesCallback(coordinates){
-        console.log(coordinates)
-        setCoords(coordinates)
+        let coordsObj = {lat: coordinates[0], lng : coordinates[1]} 
+        setCoords(coordsObj)
     }
 
    
@@ -83,7 +89,7 @@ const LookforFoodWrapper= (props) => {
     }
 
     async function initPlacesRequest(coordinates, cuisines){ 
-    
+        console.log(coordinates)
         const foodParam = cuisines.toString();
         const latParam = coordinates.lat.toString();
         const lngParam = coordinates.lng.toString();
@@ -111,11 +117,9 @@ const LookforFoodWrapper= (props) => {
                     <button type = "submit" onClick = {initFoodFind}> Go! </button>
                 </div>}
 
-                
-                
-            {/* </form> */}
+            
         </div>
     )
 }
 
-export default LookforFoodWrapper;
+export default SelectionUI;

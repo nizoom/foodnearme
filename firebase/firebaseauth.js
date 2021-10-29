@@ -1,5 +1,7 @@
 import { getApp } from "@firebase/app";
 import { FacebookAuthProvider, GoogleAuthProvider, signOut, getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signInWithPopup } from "firebase/auth";
+import { getUserData } from "./getdatafirebase";
+import { createUserinDB } from "./setdatafirebase";
 
 export async function signIn(email, password){
   const auth = getAuth();
@@ -114,15 +116,23 @@ export async function GoogleSignin(){
   const provider = new GoogleAuthProvider();
   const auth = getAuth();
   const result = await signInWithPopup(auth, provider)
-  .then((result) => {
+  .then(async (result) => {
     // This gives you a Google Access Token. You can use it to access the Google API.
     const credential = GoogleAuthProvider.credentialFromResult(result);
     const token = credential.accessToken;
     // The signed-in user info.
     const user = result.user;
-    //console.log(user)
+    
+    //search realtime db for user id 
+    const doesUserExist = await getUserData(user.uid)
+    
+    //if it does not exist an entry needs to be created and we need to prompt the user with nickname screen 
+    if(!doesUserExist){
+        //go to nick name page
+        return false
+    } //else 
     return user;
-    // ...
+  
   }).catch((error) => {
     // Handle Errors here.
     const errorCode = error.code;

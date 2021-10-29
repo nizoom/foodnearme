@@ -13,7 +13,7 @@ const SpecificFoodBox = (props) => {
         cuisineRef.current = event.target.value
         props.getCustomCuisine(cuisineRef.current)
     }
-    console.log(props.inputValidity)
+    
     return (
         <div className = 'specific-food-box-wrapper'>
         <div className='specific-food-box'>

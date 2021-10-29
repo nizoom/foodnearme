@@ -8,8 +8,9 @@ export async function getUserData(uid){
        //console.log(snapshot.val());
        return snapshot.val();
      } else {
+       //user does not exist in realtime db
        console.log("No data available");
-       
+       return false
      }
    }).catch((error) => {
      console.error(error);
@@ -17,5 +18,3 @@ export async function getUserData(uid){
    return userData;
 }
 
-//once we have userinfo maybe use the snapshot 
-//to listen on that logged in acc ..?
