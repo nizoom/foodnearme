@@ -3,18 +3,24 @@ import { postName } from "../firebase/setdatafirebase";
 import { createUserinDB } from "../firebase/setdatafirebase";
 import {useAuthState} from "react-firebase-hooks/auth"
 import {getAuth} from "firebase/auth"
+import { useRouter } from "next/router";
 
 const NickNamePage = (props) => { // for ppl who login w gmail or fb and don't have a nickname set
 
     const auth = getAuth();
     const [user, loading, error] = useAuthState(auth);
     const nameRef = useRef();
+    const router = useRouter()
 
     function handleNameSubmit(event){
         event.preventDefault();
         const name = nameRef.current.value;
         console.log(nameRef.current.value)
-        createUserinDB(name, user.email, user.uid)
+        if(name.length > 0){
+            createUserinDB(name, user.email, user.uid)
+            router.push('./')
+        }
+        
     } 
     return(
         <div className = "nickname-page-wrapper">

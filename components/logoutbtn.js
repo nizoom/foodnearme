@@ -32,7 +32,7 @@ const LogoutBtn = (props) => {
     
     }
     return(
-        <div>
+        <div className='login-out-btn-wrapper'>
             <button onClick = {handleBtnClick}
              style = {{float: "right", margin: "10px", padding: "10px"}}> {btnText} </button>
         </div>

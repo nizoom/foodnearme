@@ -31,16 +31,13 @@ export function formattedUid(uid) {
     return deletelastquote
 }
 
-export async function postName(){
-    const database  = getDatabase(app)
 
-}
 
 
 export function updateFoodPreferences(uid, foodPreferences){
     console.log('updating preferences')
     const db = getDatabase();
-    //its creating an extra object instead of updating it
+  
     set(ref(db, 'users/' + uid + `/preferences`), { 
         foodPreferences
     });

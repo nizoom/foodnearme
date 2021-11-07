@@ -124,7 +124,8 @@ const DisplayRestaurants = ({ restaurants }) => {
                         <p> {restaurant.address_components}</p>
                         <p> Price Level: {restaurant.priceLvl}</p>
                         <p> {restaurant.address} </p>
-                        <p> Visit: {restaurant.website} </p>
+                        <a href = {restaurant.website}>{restaurant.website} </a>
+                        <p>{restaurant.phoneNum}</p> 
 
                     </div>
                 ))

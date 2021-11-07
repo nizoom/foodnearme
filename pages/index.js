@@ -7,10 +7,14 @@ import {useAuthState} from "react-firebase-hooks/auth"
 import {getAuth} from "firebase/auth"
 import { getUserData } from '../firebase/getdatafirebase'
 import { formattedUid } from '../firebase/setdatafirebase'
+import logo from '../media/logo.png'
+
 
 
 import SelectionUI from '../components/selectionUI'
 import FaveSection from '../components/favesComponent/favesection'
+import HeroSection from '../components/herosection'
+import Footer from '../components/footer'
 
 export default function Home() {
   
@@ -56,12 +60,34 @@ export default function Home() {
     <div> 
         <Head>
             <script async defer src ={mapsLibraryScript}/>
+            <link rel="preconnect" href="https://fonts.googleapis.com"/>
+            <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+            <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@100;300;400&display=swap" rel="stylesheet"/>
+            <link rel="preconnect" href="https://fonts.googleapis.com"/>
+            <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+            <link rel="preconnect" href="https://fonts.googleapis.com"/>
+            <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@100;300;400&family=Lato:wght@100;300;400&display=swap" rel="stylesheet"/>
           </Head>
+          
+        <header> 
+         
+          <div className = 'logo-wrapper'>
+            <Image src = {logo} className = 'logo' layout = '' priority fixed = '1x'/>
+          </div>
+          
+          <h1 className = 'welcome-msg'>Welcome to Food Near Me</h1>
 
-        <LogoutBtn currentUser = {user} clearHomeScreen = {logoutClearsScreen}/>
-        <h1 style = {{margin: "10px"}}>Welcome to Food Near Me</h1>
+        </header>
+
+        {foodPrefsFromDB === null ? 
         
-        {foodPrefsFromDB === null ? <h2 style = {{margin: "10px"}}> Log in and we'll handle the rest! </h2> :
+        <div>
+
+          <div className ='subheader-wrapper'> <h2 className='subheader'> Log in and we'll handle the rest! </h2>  </div>  
+
+          <HeroSection/>
+        </div> :
+
           <div> 
             <h2 style = {{margin: '10px'}}>
             {welcomeStatement}</h2> 
@@ -71,8 +97,9 @@ export default function Home() {
             <FaveSection currentFavesState = {foodPrefsFromDB} uid = {userID}/> 
           </div>
           }
+        <LogoutBtn currentUser = {user} clearHomeScreen = {logoutClearsScreen} />
         
-          
+        <Footer/>
     </div>
   )
 }
