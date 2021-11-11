@@ -1,11 +1,268 @@
-@media(max-width: 450px){
-    header{
-        display: flex;
-        flex-direction: row;
-        background-color: #D8E9EA;
+body{
+    background: rgb(68, 117, 132, .1);
+}
+header{
+    display: flex;
+    flex-direction: row;
+    background-color: #D8E9EA;
+}
+
+.logo-wrapper{
+    margin: 10px 0 10px 10px;
+    width: 63px;
+    height: 69px;
+   
+}
+
+/* .page-container{
+    position: relative;
+    min-height: 100vh;
+} */
+
+.welcome-msg{
+   
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 36px;
+    font-weight: 400;
+    margin-left: 20px;
+    margin-top: 35px;
+   
+
+}
+.subheader-wrapper{
+   background-color: #D8E9EA;
+   padding-bottom: 20px;
+}
+.subheader{
+    font-family: 'Lato', sans-serif;
+    font-size: 24px;
+    margin: 0 0 0 100px;
+    font-weight: 400;
     
+}
+
+.main-hero-text{
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 36px;
+    font-weight: 400;
+    word-spacing: -2px;
+}
+
+ 
+.login-out-btn-wrapper{
+    display: flex;
+    float:right;
+    margin: -60px 32px 0 0;
+    justify-content: center;
+
+}
+.login-out-btn-wrapper button {
+
+    font-family: 'Lato', sans-serif;
+    text-align: center;
+    font-size: 18px;
+    background-color: #94D2BD;
+    color: black;
+    width: 139px;
+    height: 55px;
+    filter: drop-shadow(0px 2px 2px #022C35);
+    border: none;
+    cursor: pointer;
+
+
+}
+
+.hero-text-wrapper{
+    text-align: center;
+    margin: 108px 225px 0px 225px;
+    text-align: justify;
+}
+
+
+.hero-wrapper{
+    position: absolute;
+    top: 215px;
+    bottom: 135px;
+    width: 100%;
+    height: 341px;
+    background-color: #94D2BD;
+    overflow: hidden;
+}
+
+.supporting-hero-text{
+    font-family: 'Lato', sans-serif;
+    font-size: 18px;
+    
+}
+
+.maindish-wrapper{
+    position: absolute;
+    top:80px;
+    left:-60px;
+    margin:0;
+   
+}
+
+.donutdish-wrapper{
+    float:right;
+    margin-right: -50px;
+    margin-top: -50px;
+    
+}
+
+    /* margin-top: -110px; */
+
+
+.darkdonut-wrapper{
+    display: none;
+}
+.pinkdonut-wrapper{
+    display: none;
+}
+
+.sushibox-wrapper{
+    position: absolute;
+    top:10px;
+    right:-40px;
+}
+
+footer{
+    font-family: 'Josephine Sans', sans-serif;
+    position: absolute;
+    bottom: 0;
+    display: flex;
+    width: 100%;
+    height: 80px;
+    background-color: #005F73;
+    color: white;   
+    justify-content: space-evenly;
+    align-items: center;
+    
+}
+
+footer p {
+    cursor: pointer;
+    font-size: 16px;
+}
+@media(max-width: 900px){ 
+                                         
+    .donutdish-wrapper{
+        margin-top: -70px;
+        margin-right: -60px;
+        transform: rotate(20deg);
+    }
+    .welcome-msg{
+        font-size: 32px;
+    }
+    .subheader{
+        font-size: 18px;
+    }
+    .main-hero-text{
+        font-size: 26px;
+        word-spacing: -2px;
     }
 
+    .supporting-hero-text{
+        font-size: 16px;
+    }
+    .maindish-wrapper{
+        left: -70px;
+    }
+    footer{
+        height: 60px;
+    }
+    footer p {
+        font-size: 14px;
+    }
+   
+}
+@media(max-width: 800px){
+    .maindish-wrapper{
+        left: -90px
+    }
+}
+
+@media(max-width: 700px){  /* WE ARE HERE  */
+    .hero-wrapper{
+     top: 210px;
+    }
+    .hero-text-wrapper{
+        margin: 75px 190px 0 190px;
+    }
+
+    .maindish-wrapper{
+        left: -125px;
+    }
+    .sushibox-wrapper{
+        right: -60px;
+    }
+    .donutdish-wrapper{
+        margin-top: -50px;
+        margin-right: -70px;
+    }
+
+    .login-out-btn-wrapper{
+        margin-top: -50px; 
+    }
+    .login-out-btn-wrapper button{
+        width: 100px;
+        font-size: 16px;
+        height: 50px;
+       
+    }
+}
+
+@media(max-width: 650px){
+    .login-out-btn-wrapper button{ 
+
+        width: 90px;
+        height: 40px;
+    }
+    .hero-text-wrapper{
+        margin: 75px 170px 0 170px
+    }
+
+}
+@media(max-width: 620px){
+        
+    .login-out-btn-wrapper{
+        z-index: 100;
+        float:none;
+        position: absolute;
+        left: 0; 
+        right: 0; 
+        margin-left: auto; 
+        margin-right: auto; 
+        bottom: 90px;
+  
+
+    }
+    .login-out-btn-wrapper button {
+        background-color: #005F73;
+        color: white;
+        width: 145px;
+        height: 35px;
+
+    }
+}
+
+@media(max-width: 600px){
+    .hero-text-wrapper{
+        margin: 75px 150px 0 150px
+    }
+}
+
+@media(max-width: 540px){
+    .hero-text-wrapper{
+        margin: 60px 140px 0 140px;
+        text-align: justify;
+    }
+    .welcome-msg{
+        font-size: 24px;
+    }
+}
+
+@media(max-width: 470px){
     .logo{
        
 
@@ -13,81 +270,116 @@
 
     .logo-wrapper{
         margin: 7px 0 7px 7px;
-        width: 33px;
-        height: 35px;
+        width: 48px;
+        height: 48px;
     }
 
     .welcome-msg{
         position: absolute;
-        font-family: 'Josefin Sans', sans-serif;
+        margin-top: 30px;
         font-size: 24px;
-        left: 58px;
+        left: 59px;
+        font-weight: 400;
     }
 
     .subheader-wrapper{
         width: 100%;
         background-color: #D8E9EA;
         padding-bottom: 18px;
+        padding-top:  5px;
+   
+     
     }
 
     .subheader{
-        font-family: 'Lato', sans-serif;
         font-size: 18px;
-        margin: 0 0 0 65px;
-        font-weight: 400;
-        
+        margin-left: 82px;
     }
 
     
     .login-out-btn-wrapper{
-        display: flex;
+        z-index: 100;
+        float:none;
         position: absolute;
         left: 0; 
         right: 0; 
         margin-left: auto; 
         margin-right: auto; 
-        bottom: 82px;
-        background-color: #94D2BD;
-        width: 192px;
-        justify-content: center;
+        bottom: 102px;
+  
 
     }
     .login-out-btn-wrapper button {
-        
-        font-family: 'Lato', sans-serif;
-        text-align: center;
-        padding:0;
-        background-color: #005F73;
-        color: white;
-        width: 140px;
-        height: 35px;
-        filter: drop-shadow(0px 2px 2px #022C35);
-        border: none;
+      
+        border: 1px solid #D8E9EA;
+   
+    
     }
 
 
     .hero-wrapper{
         position: absolute;
-        top: 150px;
+        top: 130px;
         bottom: 150px;
-        width: 100%;
-        height: 432px;
-        background-color: #94D2BD;
+        height: 542px;
     }
+    .darkdonut-wrapper{
+        display: block;
+        position: absolute;
+        left: -5px;
+        top: -5px;
+    }
+
+    .darkdonut{
+      
+
+    }
+    
     .hero-text-wrapper{
-        margin: 20px;
-        text-align: justify;
+        margin: 90px 20px 20px 20px;
         text-justify: inter-word;
 
     }
     .main-hero-text{
-        font-family: 'Josefin Sans', sans-serif;
-        font-size: 24px;
+        font-size: 23px;
     }
 
     .supporting-hero-text{
-        font-family: 'Lato', sans-serif;
         font-size: 14px;
+        line-height:130%;
+        
+    }
+
+    .maindish-wrapper{
+     
+        left:-120px;
+        top:220px;
+        margin:0;
+
+    }
+
+    
+
+    .sushibox-wrapper{
+      position: absolute;
+      right: -50px;
+      top: 210px;
+    
+    }    
+
+    .pinkdonut-wrapper{
+        display: block;
+        position: absolute;
+        bottom: 70px;
+        right: -25px;
+    }
+
+    .donutdish-wrapper{
+        display:none;
+    }
+
+    .pinkdonut{
+     transform: rotate(20deg)
     }
 
     footer{
@@ -108,5 +400,103 @@
     }
 
 
+}
+
+@media(max-width: 390px){
+    .welcome-msg{
+        font-size: 22px;
+        left:50px;
+    }
+    .subheader{
+        font-size: 16px;
+        margin-left: 75px;
+    }
+    .main-hero-text{
+        font-size: 20px;
+    }
+
+    .supporting-hero-text{
+        line-height: 150%;
+    }
+    .login-out-btn-wrapper button{
+        width: 120px;
+        font-size: 14px;
+    }
+
+}
+
+@media(max-width: 330px){
+    .subheader{
+        margin-left: 73px;
+      
+    }
+    .welcome-msg{
+        font-size: 20px;
+    }
+
+    footer{
+        height: 60px;
+    }
+
+    footer p {
+        font-size: 10px;
+    }
+}
+
+@media(max-width: 300px){
+    .welcome-msg{
+        text-align: left;
+
+    }
+    .subheader{
+        display: none;
+    }
+
+    .maindish-wrapper{
+        display: none;
+    }
+
+    .sushibox-wrapper{
+       display: none;
+    }
+}
+
+/* max height css */
+
+@media(max-height:700px){
+   .hero-wrapper{
+      
+       height: 55%;
+   }
+   .pinkdonut-wrapper{
+       display: none;
+   }
+}
+@media(max-height:450px){
+   .hero-wrapper{
+      
+       height: 60%;
+   }
+}
+
+@media(min-height: 800px){
+    .hero-wrapper{
+        height: 600px;
+    }
+
+    .pinkdonut-wrapper{
+        display: block;
+        margin-top: 300px;
+        margin-right: 500px;
+        transform: rotate(90deg);
+    }
+
+    .darkdonut-wrapper{
+        display: block;
+        float: right;
+        margin-top: 500px;
+        transform: rotate(180deg);
+
+    }
 }
 

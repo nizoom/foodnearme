@@ -57,7 +57,7 @@ export default function Home() {
     console.log('save some faves below or try a specific cuisine')
   }
   return (
-    <div> 
+    <div className = 'page-container'> 
         <Head>
             <script async defer src ={mapsLibraryScript}/>
             <link rel="preconnect" href="https://fonts.googleapis.com"/>
@@ -79,6 +79,9 @@ export default function Home() {
 
         </header>
 
+        <LogoutBtn currentUser = {user} clearHomeScreen = {logoutClearsScreen} />
+
+
         {foodPrefsFromDB === null ? 
         
         <div>
@@ -97,7 +100,6 @@ export default function Home() {
             <FaveSection currentFavesState = {foodPrefsFromDB} uid = {userID}/> 
           </div>
           }
-        <LogoutBtn currentUser = {user} clearHomeScreen = {logoutClearsScreen} />
         
         <Footer/>
     </div>

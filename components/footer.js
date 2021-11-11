@@ -6,8 +6,8 @@ const Footer = () => {
             <footer>
                 <p>Twitter</p>
                 <p>Contact</p>
-                <p>More From Nissim Ram</p>
                 <p>Blog</p>
+                <p>More From Nissim Ram</p>
             </footer>
         </div>
     )
