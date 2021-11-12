@@ -106,7 +106,7 @@ header{
 .donutdish-wrapper{
     float:right;
     margin-right: -50px;
-    margin-top: -50px;
+    margin-top: 50px;
     
 }
 
@@ -147,7 +147,7 @@ footer p {
 @media(max-width: 900px){ 
                                          
     .donutdish-wrapper{
-        margin-top: -70px;
+        margin-top: 70px;
         margin-right: -60px;
         transform: rotate(20deg);
     }
@@ -197,7 +197,7 @@ footer p {
         right: -60px;
     }
     .donutdish-wrapper{
-        margin-top: -50px;
+        margin-top: 50px;
         margin-right: -70px;
     }
 
@@ -305,7 +305,7 @@ footer p {
         right: 0; 
         margin-left: auto; 
         margin-right: auto; 
-        bottom: 102px;
+        bottom: 90px;
   
 
     }
@@ -426,6 +426,9 @@ footer p {
 }
 
 @media(max-width: 330px){
+    .login-out-btn-wrapper{
+        bottom: 77px;
+    }
     .subheader{
         margin-left: 73px;
       
@@ -484,7 +487,7 @@ footer p {
         height: 600px;
     }
 
-    .pinkdonut-wrapper{
+    /* .pinkdonut-wrapper{
         display: block;
         margin-top: 300px;
         margin-right: 500px;
@@ -497,6 +500,6 @@ footer p {
         margin-top: 500px;
         transform: rotate(180deg);
 
-    }
+    } */
 }
 
