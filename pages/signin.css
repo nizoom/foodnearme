@@ -1,5 +1,23 @@
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@100;300;400&family=Lato:wght@100;300;400&display=swap');
+
+.logo-wrapper-login{
+    width: 100%;
+    padding: 22px;
+    display: flex;
+    justify-content: center;
+}
+.logo-login{
+   transform: rotate(-3deg);
+    width: 54px;
+    height: 48px;
+}
+
 .signin-page-wrapper{
     text-align: center;
+    background-color:rgb(32, 73, 85, .15);
+    margin: 0;
+    height: 100vh;
+    width: 100%;
 }
 
 
@@ -8,17 +26,90 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    background-color: #D8E9EA;
+    width: 92%;
+    margin: auto;
 
+
+
+}
+.instructional-header{
+    font-family: 'Josefin Sans', sans-serif;
+    font-weight: 400;
+    margin-top: 0;
 }
 
 .group{
-    margin: 10%;
+  margin: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+.label{
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 20px;
+    margin: 25px 0 25px 0;
+
+}
+
+.signin-inputs{
+    height: 32px;
+    width: 220px;
+    border: none;
 }
 
 form{
-    margin-bottom: 10%;
+  
+}
+.signin-submit{
+    background-color: #005F73;
+    color: white;
+    font-family: 'Lato', sans-serif;
+    width: 140px;
+    height: 35px;
+    margin: 30px;
+    font-size: 14px;
+    font-weight: 400;
+    letter-spacing: 1px;
+    border: none;
+    box-shadow: 0px 4px 0px black;
 }
 
-a{
-    color: orangered;
+.instructional-p{
+    font-family: 'Lato', sans-serif;
+    font-size: 20px;
+    margin: 45px 0 0 0;
+    
+
+}
+
+.gmail-section{
+ 
+}
+
+.gmail-btn{
+    border: none;
+    background-color: black;
+    color: white;
+    font-family: 'Lato', sans-serif;
+    width: 140px;
+    height: 35px;
+    margin-top: 30px;
+    margin-bottom: 45px;
+    font-size: 14px;
+    font-weight: 400;
+    letter-spacing: 1px;
+    box-shadow: 0px 4px 0px #005F73;
+}
+.create-account-p{
+    margin:0;
+   font-family: 'Lato', sans-serif;
+   font-size: 20px;
+   padding-bottom: 20%;
 } 
+
+.create-account-p span {
+    color: #9B2226;
+   
+}
+

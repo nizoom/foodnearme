@@ -3,6 +3,8 @@ import auth from "../firebase/clientApp";
 import Link from "next/link"
 import { useRouter } from "next/router"
 import { signIn, validateForm, GoogleSignin, FacebookSignin } from "../firebase/firebaseauth";
+import Image from 'next/image'
+import logo from '../media/logo.png'
 
 function SignInScreen() {
 
@@ -59,33 +61,43 @@ function SignInScreen() {
 
     return (
       <div className="signin-page-wrapper">
+
+        <div className = 'logo-wrapper-login'>
+            <div className = 'logo-login'>
+              <Image src = {logo} layout = '' priority fixed = '1x'/>
+          </div>
+        </div>
         
-        <h1> Please sign in</h1>
+        <h1 className = 'instructional-header'> Please sign in</h1>
         <div className = "signin-wrapper">
           {showErrs.length > 0 ? <p> {showErrs} </p> : null}
           <form onSubmit = {handleSignin}>
             <div className="group"> 
-              <label htmlFor="email"> Email :</label>
-              <input type = "email" name="email" ref = {emailRef}/> 
+              <label htmlFor="email" className='label'> Email:</label>
+              <input type = "email" name="email" ref = {emailRef} className = 'signin-inputs'/> 
             </div>
             
             <div className="group"> 
-              <label htmlFor="password"> Password </label>
-              <input type="password" name="password" ref={pwRef}/> 
+              <label htmlFor="password" className = 'label'> Password: </label>
+              <input type="password" name="password" ref={pwRef} className = 'signin-inputs'/> 
             </div>
-            <button type = "submit"> Submit </button>
+            <button type = "submit" className = 'signin-submit'> Submit </button>
             <div>
-              <p> Or sign in with : </p>
-              <button onClick = {() => handleFirebaseLogin(event, "Gmail")}> Gmail </button>
-              <button onClick= {() => handleFirebaseLogin(event, "Facebook")}> Facebook </button>
+              <p className = 'instructional-p'> Or sign in with Google: </p>
+              <button className = 'gmail-btn'onClick = {() => handleFirebaseLogin(event, "Gmail")}> Gmail </button>
             </div> 
           </form>
           <div>
+          <div className = 'gmail-section'>
+            <p className = 'create-account-p'> Don't have an account? Sign up 
             <Link href="/signup">
               <a>
-                <p> Don't have an account? Sign up here </p>
+            <span> here.</span> 
               </a>
             </Link>
+            </p>
+          </div>
+          
           </div>
         </div>
       </div>
@@ -93,3 +105,5 @@ function SignInScreen() {
   }
   
   export default SignInScreen;
+
+  //               <button onClick= {() => handleFirebaseLogin(event, "Facebook")}> Facebook </button>

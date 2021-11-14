@@ -56,7 +56,7 @@ export default function Home() {
   function noFaveHandler(){ // if user submits a faves request without any saved faves
     console.log('save some faves below or try a specific cuisine')
   }
-  return (
+  return ( 
     <div className = 'page-container'> 
         <Head>
             <script async defer src ={mapsLibraryScript}/>
