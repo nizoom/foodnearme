@@ -1,5 +1,23 @@
 @import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@100;300;400&family=Lato:wght@100;300;400&display=swap');
 
+@media(max-width: 400px){
+    .signin-wrapper{
+      
+     
+        width: 92%;
+    }
+}
+
+.err-message{
+    font-family: 'Josephin Sans', sans-serif;
+    width: 90%;
+    margin: auto;
+    padding: 4%;
+    margin-top: 20px;
+    color: #2B0506;
+    text-align: justify;
+    background-color: rgb(156, 18, 5, .4) ;
+}
 .logo-wrapper-login{
     width: 100%;
     padding: 22px;
@@ -27,7 +45,7 @@
     justify-content: center;
     align-items: center;
     background-color: #D8E9EA;
-    width: 92%;
+    width: 20%;
     margin: auto;
 
 

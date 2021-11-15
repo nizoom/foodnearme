@@ -70,7 +70,7 @@ function SignInScreen() {
         
         <h1 className = 'instructional-header'> Please sign in</h1>
         <div className = "signin-wrapper">
-          {showErrs.length > 0 ? <p> {showErrs} </p> : null}
+          {showErrs.length > 0 ? <p className='err-message'> {showErrs} </p> : null}
           <form onSubmit = {handleSignin}>
             <div className="group"> 
               <label htmlFor="email" className='label'> Email:</label>
