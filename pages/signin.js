@@ -5,6 +5,8 @@ import { useRouter } from "next/router"
 import { signIn, validateForm, GoogleSignin, FacebookSignin } from "../firebase/firebaseauth";
 import Image from 'next/image'
 import logo from '../media/logo.png'
+import waveTop from '../media/wavetop.png';
+import waveBottom from '../media/wavebottom.png';
 
 function SignInScreen() {
 
@@ -61,11 +63,19 @@ function SignInScreen() {
 
     return (
       <div className="signin-page-wrapper">
-
+        
         <div className = 'logo-wrapper-login'>
             <div className = 'logo-login'>
               <Image src = {logo} layout = '' priority fixed = '1x'/>
           </div>
+        </div>
+
+        <div className = 'wavetop-wrapper'>
+          <Image src = {waveTop}  className = 'wavetop' width = '256' height = '461' layout='responsive'/>
+        </div>
+
+        <div className = 'wavebottom-wrapper'>
+        <Image src = {waveBottom}  className = 'wavetop' width = '256' height = '461' layout='responsive'/>
         </div>
         
         <h1 className = 'instructional-header'> Please sign in</h1>

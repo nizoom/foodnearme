@@ -1,12 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@100;300;400&family=Lato:wght@100;300;400&display=swap');
 
-@media(max-width: 400px){
-    .signin-wrapper{
-      
-     
-        width: 92%;
-    }
-}
 
 .err-message{
     font-family: 'Josephin Sans', sans-serif;
@@ -45,7 +38,7 @@
     justify-content: center;
     align-items: center;
     background-color: #D8E9EA;
-    width: 20%;
+    width: 92%;
     margin: auto;
 
 
@@ -90,7 +83,7 @@ form{
     font-weight: 400;
     letter-spacing: 1px;
     border: none;
-    box-shadow: 0px 4px 0px black;
+    box-shadow: 0px 5px 0px black;
 }
 
 .instructional-p{
@@ -117,7 +110,7 @@ form{
     font-size: 14px;
     font-weight: 400;
     letter-spacing: 1px;
-    box-shadow: 0px 4px 0px #005F73;
+    box-shadow: 0px 5px 0px #005F73;
 }
 .create-account-p{
     margin:0;
@@ -131,3 +124,60 @@ form{
    
 }
 
+
+.wavetop-wrapper{
+    display: none;
+}
+.wavebottom-wrapper{
+    display: none;
+}
+
+
+@media(min-width: 400px){ 
+    /* full screen */
+    .wavebottom-wrapper{
+        display: block;
+        position: absolute;
+        bottom: 0;
+        left: 30px;
+        width: 27%;
+    }
+    
+    .wavetop-wrapper{
+        display: block;
+        position: absolute;
+        top: 0;
+        right: 30px;
+        width: 27%;
+    }
+  
+    .signin-wrapper{
+        position: absolute;
+        left: 0;
+        right:0;
+        margin:auto;
+        bottom: 0;
+        width: 35%;
+    }
+
+    .logo-wrapper-login{
+        justify-content: left;
+    }
+    .instructional-header{
+        font-size: 40px;
+        position: absolute;
+        top: 50px;
+        left: 0; 
+        right: 0; 
+        margin-left: auto; 
+        margin-right: auto; 
+        width: 250px;
+    }
+
+}
+
+@media(min-width: 850px){
+    .wavebottom{
+        height: 1vw;
+    }
+}
