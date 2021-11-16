@@ -24,10 +24,12 @@
 }
 
 .signin-page-wrapper{
+    position: relative;
     text-align: center;
-    background-color:rgb(32, 73, 85, .15);
+   
+    background-color:rgba(77, 112, 123, 0.15);
     margin: 0;
-    height: 100vh;
+    /* height: 100vh; */
     width: 100%;
 }
 
@@ -150,14 +152,20 @@ form{
         right: 30px;
         width: 27%;
     }
+
+    .signin-page-wrapper{
+  
+    }
   
     .signin-wrapper{
-        position: absolute;
+        position: relative;
         left: 0;
         right:0;
         margin:auto;
         bottom: 0;
         width: 35%;
+        
+        margin-top: 40px;
     }
 
     .logo-wrapper-login{
@@ -172,12 +180,72 @@ form{
         margin-left: auto; 
         margin-right: auto; 
         width: 250px;
+        overflow: scroll;
     }
 
 }
 
-@media(min-width: 850px){
-    .wavebottom{
-        height: 1vw;
+@media(max-width: 800px){
+    .instructional-header{
+        font-size: 30px;
+    }
+    .signin-wrapper{
+      width: 40%;
+    }
+    .signin-wrapper label{
+        font-size: 18px;
+    }
+
+    .signin-wrapper button{
+        width: 120px;
+        font-size: 12px;
+    }
+
+    .signin-wrapper p {
+        font-size: 17px;
+    }
+
+    .wavebottom-wrapper{
+        width: 22%;
+    }
+    
+    .wavetop-wrapper{
+        width: 22%;
+    }
+
+    .group input{
+        width: 90%;
+        margin: auto;
+    }
+    .create-account-p{
+        padding-left:10%;
+        padding-right: 10%;
+    }
+    .instructional-p{
+        padding-left:10%;
+        padding-right: 10%;
+    }
+
+    
+}
+
+
+@media(max-height: 800px){ 
+    .signin-page-wrapper{
+
+     
+    }
+    .signin-wrapper{
+        margin-top:100px;
+  
+    }
+}
+
+@media(min-height: 800px){
+    .signin-page-wrapper{
+        height: 100vh;
+    }
+    .signin-wrapper{
+        height:70%;
     }
 }

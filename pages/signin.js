@@ -75,7 +75,7 @@ function SignInScreen() {
         </div>
 
         <div className = 'wavebottom-wrapper'>
-        <Image src = {waveBottom}  className = 'wavetop' width = '256' height = '461' layout='responsive'/>
+          <Image src = {waveBottom}  className = 'wavetop' width = '256' height = '461' layout='responsive'/>
         </div>
         
         <h1 className = 'instructional-header'> Please sign in</h1>
