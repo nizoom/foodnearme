@@ -135,7 +135,7 @@ form{
 }
 
 
-@media(min-width: 400px){ 
+@media(min-width: 415px){ 
     /* full screen */
     .wavebottom-wrapper{
         display: block;
@@ -184,6 +184,8 @@ form{
     }
 
 }
+
+
 
 @media(max-width: 800px){
     .instructional-header{
@@ -249,3 +251,27 @@ form{
         height:70%;
     }
 }
+
+@media(max-width: 415px){
+    .signin-wrapper{
+        width: 70%;
+        margin-top: 0;
+    }
+}
+
+@media(max-width: 375px){
+    .signin-wrapper{
+        width: 90%;
+        margin-top: 0px;
+    }
+    .group input{
+        width: 200px;
+    }
+    .instructional-p{
+        margin-top: 1px;
+    }
+    .gmail-btn{
+        
+    }
+}
+
