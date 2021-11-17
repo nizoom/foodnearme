@@ -50,6 +50,7 @@
     font-family: 'Josefin Sans', sans-serif;
     font-weight: 400;
     margin-top: 0;
+    z-index: 100;
 }
 
 .group{
@@ -275,3 +276,4 @@ form{
     }
 }
 
+/* SIGN UP PAGE CLASSES */

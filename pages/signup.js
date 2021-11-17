@@ -5,14 +5,16 @@ import { createUserinDB } from "../firebase/setdatafirebase";
 import awth from "../firebase/clientApp";
 import { useRouter } from "next/router";
 
-// import {useAuthState} from "react-firebase-hooks/auth"
-// import {getAuth} from "firebase/auth"
+import Image from 'next/image'
+import logo from '../media/logo.png'
+import waveTop from '../media/wavetop.png';
+import waveBottom from '../media/wavebottom.png';
+
+
 
 
 function signUpPage(){
-    //hook to get userid once the account is created
-    // const auth = getAuth();
-    //const [user, loading, error] = useAuthState(auth);
+
 
     const router = useRouter();
 
@@ -50,35 +52,59 @@ function signUpPage(){
     }
     return(
         <div className = "signin-page-wrapper">
-            <h1> Sign up here</h1>
+          
+           
             {showErrs.length > 0 ? <h3>{showErrs}</h3>: null}
+
             <div>
-                <form onSubmit= {handleSignup}>
-                    <div className="group">
-                        <label htmlFor="email"> Email:</label>
-                        <input type="email" name = "email" ref = {emailRef}/>
+          
+
+                    <div className = 'logo-wrapper-login'>
+                     <div className = 'logo-login'>
+                        <Image src = {logo} layout = '' priority fixed = '1x'/>
+                    </div>
                     </div>
 
-                    <div className="group">
-                        <label htmlFor="username"> Username:</label>
-                        <input type="text" name = "username" ref = {usernameRef}/>
+                    <div className = 'wavetop-wrapper'>
+                        <Image src = {waveTop}  className = 'wavetop' width = '256' height = '461' layout='responsive'/>
                     </div>
-                    
-                    <div className="group"> 
-                        <label htmlFor="password"> Password: </label>
-                        <input type="password" name="password" ref = {pwRef}/> 
+
+                    <div className = 'wavebottom-wrapper'>
+                        <Image src = {waveBottom}  className = 'wavetop' width = '256' height = '461' layout='responsive'/>
                     </div>
-                    <div className="group"> 
-                        <label htmlFor="pwcnfm"> Confirm Password: </label>
-                        <input type="password" name="pwcfm" ref = {pwCfmRef}/> 
+
+                    <div>
+                        <h1 className = 'instructional-header'> Sign up here</h1>
                     </div>
-                <button type = "submit"> Submit </button>
-            <div>
-              <p> Or sign in with : </p>
-              <button> Gmail </button>
-              <button> Facebook </button>
-            </div>
+
+                    <div className = "signin-wrapper">
+                        <form onSubmit= {handleSignup}>
+                            <div className="group">
+                                <label htmlFor="email" className='label'> Email:</label>
+                                <input type="email" name = "email" ref = {emailRef} className = 'signin-inputs'/>
+                            </div>
+
+                            <div className="group">
+                                <label htmlFor="username" className='label'> Username:</label>
+                                <input type="text" name = "username" ref = {usernameRef} className = 'signin-inputs'/>
+                            </div>
+                            
+                            <div className="group"> 
+                                <label htmlFor="password" className='label'> Password: </label>
+                                <input type="password" name="password" ref = {pwRef} className = 'signin-inputs'/> 
+                            </div>
+                            <div className="group"> 
+                                <label htmlFor="pwcnfm" className='label'> Confirm Password: </label>
+                                <input type="password" name="pwcfm" ref = {pwCfmRef} className = 'signin-inputs'/> 
+                            </div>
+                        <button type = "submit" className = 'signin-submit'> Submit </button>
+                    <div>
+                    <p> Or sign in with : </p>
+                    <button className = 'gmail-btn'> Gmail </button>
+                 
+                    </div>
                 </form>
+            </div>
             </div>
            
         </div>
