@@ -1,0 +1,51 @@
+.page-container{
+    background-color: rgb(32, 73, 85, .7);
+}
+
+.dashboard-welcome-statement{
+
+    color: white;
+    text-align: center;
+    font-family: 'Josefin Sans', sans-serif;
+    margin: 0;
+    font-weight: 300;
+
+}
+
+.user-path-wrapper{
+    display: flex;
+}
+
+.or {
+    color: white;
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 24px;
+}
+@media(max-width: 400px){
+    .dashboard-welcome-statement{
+        margin-top: 90px;
+        font-size: 20px;
+        padding: 10px;
+    }
+    .loggedin-welcome{
+        display: none;
+    }
+
+    .dashboard-logo{
+        transform: rotate(-20deg);
+        width: 40px;
+        position: absolute;
+        margin: 20px auto 20px auto;
+        
+        left: 0;
+        right: 0;
+        
+    }
+
+    .user-path-wrapper{
+        flex-direction: column;
+      
+        align-items: center;
+    }
+  
+}

@@ -29,11 +29,13 @@
     margin: 10px;
 }
 
-.specific-food-box{
-    border: 2px solid black;
-    width: 250px;
-    height: 200px;
-    
+.food-box{
+  
+  flex-direction: column;
+  width: 200px;
+  cursor: pointer;
+  text-align: center;
+
 }
 
 .specific-food-box input{
@@ -47,6 +49,7 @@
 
 .specific-food-box-wrapper{
     text-align: center;
+    
 }
 
 .specific-food-box form{
@@ -55,8 +58,41 @@
     flex-direction: column;
     justify-content: center
 }
-
+/* 
 .specific-food-box input{
     width: 90%;
     margin: 10px auto auto auto;
+} */
+
+.faves-descriptor{
+  position: absolute;
+  z-index: 100;
+  color: white;
+  top: 190px;
+  left: 0;
+  right: 0;
+  margin: auto;
+  width: 61px;
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: 22px;
+}
+
+.spec-food-descriptor{
+    position: absolute;
+    z-index: 100;
+    color: white;
+    top: 480px;
+    left: 0;
+    right: 0;
+    margin: auto;
+    width: 168px;
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 22px;
+  
+
+}
+@media(max-width: 400px){
+    .food-box{
+
+    }
 }

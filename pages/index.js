@@ -71,12 +71,12 @@ export default function Home() {
           
         <header> 
          
-          <div className = 'logo-wrapper'>
+          <div className = {user!== null ? 'dashboard-logo':'logo-wrapper' }>
             <Image src = {logo} className = 'logo' layout = '' priority fixed = '1x'/>
           </div>
           
-          <h1 className = 'welcome-msg'>Welcome to Food Near Me</h1>
-
+          <h1 className = {user!== null ? 'loggedin-welcome' : 'welcome-msg' }>Welcome to Food Near Me</h1>
+          
         </header>
 
         <LogoutBtn currentUser = {user} clearHomeScreen = {logoutClearsScreen} />
@@ -92,7 +92,7 @@ export default function Home() {
         </div> :
 
           <div> 
-            <h2 style = {{margin: '10px'}}>
+            <h2 className = 'dashboard-welcome-statement'>
             {welcomeStatement}</h2> 
               
             <SelectionUI currentFavesState = {foodPrefsFromDB} noFaves={noFaveHandler}/>
@@ -105,3 +105,5 @@ export default function Home() {
     </div>
   )
 }
+
+

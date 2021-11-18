@@ -4,7 +4,8 @@ body{
 header{
     display: flex;
     flex-direction: row;
-    background-color: #D8E9EA;
+    color: white;
+    /* background-color: rgb(32, 73, 85, .7); */
 }
 
 .logo-wrapper{
@@ -30,7 +31,8 @@ header{
 
 }
 .subheader-wrapper{
-   background-color: #D8E9EA;
+   /* background-color: #D8E9EA; */
+   color:white;
    padding-bottom: 20px;
 }
 .subheader{

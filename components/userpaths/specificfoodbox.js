@@ -1,4 +1,6 @@
 import React, {useRef, useEffect} from "react";
+import Image from 'next/image'
+import SpecificFoodBoxImg from '../../media/specificfoodbox.png'
 
 const SpecificFoodBox = (props) => {
     const checkboxRef = useRef();
@@ -16,8 +18,9 @@ const SpecificFoodBox = (props) => {
     
     return (
         <div className = 'specific-food-box-wrapper'>
-        <div className='specific-food-box'>
-            <p>a specific cuisine </p>
+        <div className='food-box'>
+        <Image src= {SpecificFoodBoxImg} className = 'favebox-img' width = '233' height = '224' layout = 'responsive' />
+            <p className = 'spec-food-descriptor'> Specific Cuisine </p>
             <input type = 'checkbox' onChange={props.checkboxChange} ref = {checkboxRef}/>
             {!props.checkboxStatus ? 
             <div>

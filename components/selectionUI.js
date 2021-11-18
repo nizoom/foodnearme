@@ -100,11 +100,11 @@ const SelectionUI= (props) => {
     }
     return (
 
-        <div className="specific-foodform-wrapper">
+        <div className="foodform-wrapper">
             <div className = 'user-path-wrapper'> 
                 <FavesBoxSelector className='user-path-item' checkboxChange = {checkboxChange} checkboxStatus = {foodSearchPath}/> 
 
-                <p className='user-path-item'> Or </p>
+                <p className='or'> Or a</p>
 
                 <SpecificFoodBox className='user-path-item'checkboxChange = {checkboxChange} checkboxStatus = {foodSearchPath} 
                 getCustomCuisine = {getCustomCuisine} inputValidity ={customCuisine}/>

@@ -1,4 +1,8 @@
 import React, {useEffect, useRef} from "react";
+import Image from 'next/image'
+import Faveboximg from '../../media/favefoodbox.png'
+
+
 
 const FavesBoxSelector = (props) => {
 
@@ -10,9 +14,10 @@ const FavesBoxSelector = (props) => {
 
     }, [props.checkboxStatus])
     return (
-        <div className='specific-food-box'>
-            <p>faves </p>
-            <input type= 'checkbox' onChange={props.checkboxChange}  ref = {checkboxRef}/> 
+        <div className='food-box'>
+            <Image src= {Faveboximg} className = 'favebox-img' width = '233' height = '224' layout = 'responsive' />
+            <p className = 'faves-descriptor'>Faves </p>
+            <input type= 'checkbox' onChange={props.checkboxChange}  ref = {checkboxRef} className='checkbox'/> 
         </div>
     )
 }
