@@ -124,7 +124,11 @@ const FavesForm = (props) => {
                     <label htmlFor='Mediterranean'> Mediterranean</label>
                     <input type="checkbox" name = 'Mediterranean' value = 'Mediterranean' onChange = {handleCheckChange} ref={MediterraneanRef}/>
                 </div>
-                <button type = "submit"> Save preferences </button>
+                <div> </div>
+                <div className = 'save-btn-div'>
+                    <button type = "submit" className = 'save-btn'> Save preferences </button>
+                </div>
+         
             </form>
 
             

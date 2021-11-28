@@ -21,6 +21,83 @@
     font-family: 'Josefin Sans', sans-serif;
     font-size: 24px;
 }
+
+/* FAVE SECTION*/
+
+.favesection-wrapper{
+    display: flex;
+    flex-direction: column;
+    margin-top: 45px;
+}
+.fave-bites-header{
+    font-family: 'Josefin Sans', sans-serif;
+    text-align: center;
+    color:white;
+    font-size: 24px;
+    font-weight: 300;
+}
+
+.fave-bites-subheader{
+    font-family: 'Josefin Sans', sans-serif;
+    text-align: center;
+    color:white;
+    font-size: 18px;
+    font-weight: 300;
+    margin-top: 10px;
+ 
+
+}
+
+.favesection-wrapper{
+    margin: 10px;
+}
+
+
+
+.favesform{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 2rem;
+    justify-items: flex-start;
+    align-content: flex-start;
+    overflow: hidden;
+}
+
+.favesform input{
+    transform: scale(2);
+    position: absolute;
+}
+.new-fave-div{
+    font-size: 14px;
+    display: flex;
+    overflow: hidden;
+}
+.new-fave-div label{
+    margin-left: 35px;
+ 
+}
+ 
+
+.no-faves-message{
+    text-align: center;
+    font-size: medium;
+}
+
+
+
+.save-btn{
+    background-color: #8DBCC0;
+    border:none;
+    font-family: 'Lato', sans-serif;
+    font-size: 14px;
+    padding: 2% 12.5% 2% 12.5%;
+    box-shadow: 0px 2px 3px 0px black;
+    border-radius: 16px;
+    text-align: center;
+    width: 100px;
+    overflow: visible;
+
+}
 @media(max-width: 400px){
     .dashboard-welcome-statement{
         margin-top: 90px;

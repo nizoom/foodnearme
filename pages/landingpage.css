@@ -286,7 +286,7 @@ footer p {
 
     .subheader-wrapper{
         width: 100%;
-        background-color: #D8E9EA;
+        background-color: #5E7C84;
         padding-bottom: 18px;
         padding-top:  5px;
    
@@ -387,7 +387,7 @@ footer p {
     footer{
         font-family: 'Josephine Sans', sans-serif;
         position: absolute;
-        bottom: 0;
+        bottom: -50px;
         display: flex;
         width: 100%;
         height: 69px;
