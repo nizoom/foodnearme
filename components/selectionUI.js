@@ -113,8 +113,8 @@ const SelectionUI= (props) => {
 
 
                 {addressField ?<div> <LocationSearchInput getCoordsFromAddress = {getCoordsFromAddress}/> </div> : null }
-                {!coords ? <h3> {locationMessage}</h3>:<div>
-                    <button type = "submit" onClick = {initFoodFind}> Go! </button>
+                {!coords ? <h3> {locationMessage}</h3>:<div className='go-btn-div'>
+                    <button type = "submit" onClick = {initFoodFind} className = 'go-btn'> Go! </button>
                 </div>}
 
             

@@ -21,13 +21,14 @@ const SpecificFoodBox = (props) => {
         <div className='food-box'>
         <Image src= {SpecificFoodBoxImg} className = 'favebox-img' width = '233' height = '224' layout = 'responsive' />
             <p className = 'spec-food-descriptor'> Specific Cuisine </p>
-            <input type = 'checkbox' onChange={props.checkboxChange} ref = {checkboxRef}/>
+            <input type = 'checkbox' onChange={props.checkboxChange} ref = {checkboxRef} className = 'specific-checkbox'/>
             {!props.checkboxStatus ? 
             <div>
-                <form>
+                <form className = 'specific-food-form'>
                     <label htmlFor ="cuisine"> What cuisine are you in the mood for?</label>
                     <input type="text" name = "cuisine" ref = {cuisineRef} onChange={(e) => handleInputChange(e)}
-                        placeholder = {props.inputValidity === '' ? 'Enter a cuisine' : null}
+                        className = 'specific-cuisine-input'
+                        placeholder = {props.inputValidity === '' ? 'Enter a cuisine' : null }
                     />
                 </form>
             </div> : null

@@ -30,11 +30,12 @@
 }
 
 .food-box{
-  
+  position: relative;
   flex-direction: column;
   width: 200px;
   cursor: pointer;
   text-align: center;
+  
 
 }
 
@@ -68,7 +69,7 @@
   position: absolute;
   z-index: 100;
   color: white;
-  top: 190px;
+  top: 20px;
   left: 0;
   right: 0;
   margin: auto;
@@ -81,7 +82,7 @@
     position: absolute;
     z-index: 100;
     color: white;
-    top: 480px;
+    top: 20px;
     left: 0;
     right: 0;
     margin: auto;
@@ -91,8 +92,83 @@
   
 
 }
+
+.checkbox{
+
+   z-index: 200;
+   position: absolute;
+   bottom: 35px;
+   right: 92px;
+}
+
+.specific-checkbox{
+    z-index: 200;
+    position: absolute;
+    bottom: 35px;
+    right: 92px;
+}
+
+.specific-checkbox:checked {
+    z-index: 200;
+    position: absolute;
+    bottom: 155px;
+    right: 92px;
+}
+
+input[type=checkbox]{
+    -ms-transform: scale(3); /* IE */
+    -moz-transform: scale(3); /* FF */
+    -webkit-transform: scale(3); /* Safari and Chrome */
+    -o-transform: scale(2); /* Opera */
+    transform: scale(2.5);
+    padding: 10px;
+}
+
+.specific-food-form{
+
+    display: block;
+    background-color: #EE9B00;
+    color: white;
+    padding: 10px;
+    border-radius: 16px;
+    filter: drop-shadow(0 0 0.25rem black);
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 20px;
+    font-weight: 300;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    height: 110px;
+    margin-top: 10px;
+}
+
+.specific-cuisine-input{
+    padding: 5px;
+    font-weight: 500;
+    font-family: 'Lato', sans-serif;
+    border: none;
+    border-radius: 16px;
+    text-align: center;
+}
+
+.go-btn{
+    background-color: #8DBCC0;
+    border:none;
+    font-family: 'Lato', sans-serif;
+    font-size: 16px;
+    padding: 2% 12.5% 2% 12.5%;
+    box-shadow: 0px 2px 3px 0px black;
+    border-radius: 16px;
+
+}
+
+.go-btn-div{
+    display: flex;
+    justify-content: center;
+}
+
 @media(max-width: 400px){
     .food-box{
-
+    
     }
 }
